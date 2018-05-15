@@ -14,7 +14,7 @@ const Preference = sequelize.define(
     },
     userId: {
       type: Sequelize.INTEGER,
-      field: 'user_id'
+      field: 'userId'
     }
   },
   {

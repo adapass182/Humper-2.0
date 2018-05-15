@@ -16,6 +16,7 @@ router.get('/preferences', requireUser, (req, res) => {
   preference.userId = req.user.id
 
   Preference.findAll({
+    attributes: ['breed', 'val'],
     where: { userId: preference.userId }
   })
     .then(result => {
