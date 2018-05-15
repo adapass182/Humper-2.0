@@ -66,11 +66,6 @@ export default class MainContainer extends PureComponent {
           </button>
         </div>
       </div>
-<<<<<<< HEAD
     )
   }
 }
-=======
-    )}
-  }
->>>>>>> 22b7f2f94334c30f0372b55cb4b6a88e7773daf8
