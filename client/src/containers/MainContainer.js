@@ -10,20 +10,26 @@ import LoginForm_component from '../components/LoginForm_component'
 
 
 class MainContainer extends PureComponent {
+  state = {
+    currentPage: 'main'
+  }
   static propTypes = {
     currentPage: PropTypes.string.isRequired
   }
 
 pageview = () => {
-  if (this.props.currentPage === 'main'){
+  if (this.state.currentPage === 'main'){
     return <Viewer/>
-  } if (this.props.currentPage === 'test'){
+  } if (this.state.currentPage === 'test'){
     return <LoginForm_component/>
   }
 }
 
-handleClick() {
-  this.props.setCurrentPage('test')
+handleClick = (e) => {
+  const {name} = e.target
+  this.setState ({
+    currentPage: name
+  })
 }
 
   render() {
@@ -42,11 +48,12 @@ handleClick() {
 
         <div id="rightSpace"></div>
         <div id="footer">
-          <button onClick={this.handleClick.bind(this)}>switch</button>
+          <button name="test" onClick={this.handleClick}>matches</button>
+          <button name="main" onClick={this.handleClick}>dogs</button>
+
         </div>
 
       </div>
-
     )}
   }
 
