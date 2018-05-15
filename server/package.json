@@ -1,0 +1,7 @@
+{
+  "name": "humper-server",
+  "version": "1.0.0",
+  "description": "humper-server",
+  "main": "index.js",
+  "license": "MIT"
+}
