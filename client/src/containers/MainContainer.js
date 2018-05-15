@@ -6,10 +6,12 @@ import { setCurrentPage } from '../actions/setCurrentPage'
 import { connect } from 'react-redux'
 import Viewer from './Viewer'
 import LoginForm_component from '../components/LoginForm_component'
+import MatchesPage_component from '../components/MatchesPage_component'
+import ProfilePage_component from '../components/ProfilePage_component'
 // import { setCurrentPage } from '../actions/setCurrentPage'
 
 
-class MainContainer extends PureComponent {
+export default class MainContainer extends PureComponent {
   state = {
     currentPage: 'main'
   }
@@ -18,10 +20,14 @@ class MainContainer extends PureComponent {
   }
 
 pageview = () => {
-  if (this.state.currentPage === 'main'){
-    return <Viewer/>
-  } if (this.state.currentPage === 'test'){
+  if (this.state.currrentPage === 'login'){
     return <LoginForm_component/>
+  } if (this.state.currentPage === 'main'){
+    return <Viewer/>
+  } if (this.state.currentPage === 'profile'){
+    return <ProfilePage_component/>
+  }  if (this.state.currentPage === 'matches'){
+    return <MatchesPage_component/>
   }
 }
 
@@ -48,23 +54,12 @@ handleClick = (e) => {
 
         <div id="rightSpace"></div>
         <div id="footer">
-          <button name="test" onClick={this.handleClick}>matches</button>
+          <button name="profile" onClick={this.handleClick}>profile</button>
           <button name="main" onClick={this.handleClick}>dogs</button>
+          <button name="matches" onClick={this.handleClick}>matches</button>
 
         </div>
 
       </div>
     )}
   }
-
-
-
-
-  const mapStateToProps = (reduxState) => {
-    return {
-      currentPage: reduxState.currentPage,
-    }
-  }
-
-
-export default connect(mapStateToProps, { setCurrentPage })(MainContainer)
