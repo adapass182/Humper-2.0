@@ -1,12 +1,12 @@
 import * as request from 'superagent'
 
 //NOTE: need to update base URL to match server development:
-const baseURL = 'http://localhost:4001'
+const baseURL = 'http://localhost:8080'
 
 export const USER_LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS'
 export const USER_LOGIN_FAILED = 'USER_LOGIN_FAILED'
 
-export const login = (email, password) => (dispatch) => {
+export const login = (email, password) => dispatch => {
   request
     .post(`${baseURL}/login`)
     .send({ email, password })
@@ -22,8 +22,7 @@ export const login = (email, password) => (dispatch) => {
           type: USER_LOGIN_FAILED,
           payload: err.response.body.message || 'Unknown error'
         })
-      }
-      else {
+      } else {
         console.error(err)
       }
     })
