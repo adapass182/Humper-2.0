@@ -5,6 +5,7 @@ import Test from './Test'
 import { setCurrentPage } from '../actions/setCurrentPage'
 import { connect } from 'react-redux'
 import Viewer from './Viewer'
+import LoginForm_component from '../components/LoginForm_component'
 // import { setCurrentPage } from '../actions/setCurrentPage'
 
 
@@ -17,9 +18,10 @@ pageview = () => {
   if (this.props.currentPage === 'main'){
     return <Viewer/>
   } if (this.props.currentPage === 'test'){
-    return <Test/>
+    return <LoginForm_component/>
   }
 }
+
 handleClick() {
   this.props.setCurrentPage('test')
 }
