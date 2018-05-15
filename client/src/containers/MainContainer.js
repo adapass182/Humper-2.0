@@ -10,7 +10,6 @@ import MatchesPage_component from '../components/MatchesPage_component'
 import ProfilePage_component from '../components/ProfilePage_component'
 // import { setCurrentPage } from '../actions/setCurrentPage'
 
-
 export default class MainContainer extends PureComponent {
   state = {
     currentPage: 'main'
@@ -29,7 +28,6 @@ pageview = () => {
   }  if (this.state.currentPage === 'matches'){
     return <MatchesPage_component/>
   }
-}
 
 handleClick = (e) => {
   const {name} = e.target
@@ -39,27 +37,22 @@ handleClick = (e) => {
 }
 
   render() {
-
     return (
       <div className="Hcontainer">
-
         <header className="App-header">
-          <h1 className="App-title">
-            HUMPER
-          </h1>
+          <h1 className="App-title">HUMPER</h1>
         </header>
 
-        <div id="leftSpace"></div>
+        <div id="leftSpace" />
         {this.pageview()}
 
-        <div id="rightSpace"></div>
+        <div id="rightSpace" />
         <div id="footer">
           <button name="profile" onClick={this.handleClick}>profile</button>
           <button name="main" onClick={this.handleClick}>dogs</button>
           <button name="matches" onClick={this.handleClick}>matches</button>
 
         </div>
-
       </div>
     )}
   }
