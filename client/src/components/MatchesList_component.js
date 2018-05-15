@@ -2,13 +2,13 @@ import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 import {Redirect} from 'react-router-dom'
 
-class TopDogs extends PureComponent {
+class MatchesList extends PureComponent {
 
 	render() {
 		return (
-      <li className="TopDogs">
-        <p className="breed">{breed}</p>
-        <p className="value">{value}</p>
+      <li className="Matches">
+        <p className="name">{name}</p>
+        <p className="topDog">{topDog}</p>
       </li>
 		)
 	}
@@ -20,4 +20,4 @@ const mapStateToProps = function (state) {
 	}
 }
 
-export default connect(mapStateToProps, {})(TopDogs)
+export default connect(mapStateToProps, {})(MatchesList)
