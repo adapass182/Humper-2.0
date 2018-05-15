@@ -1,0 +1,16 @@
+{
+  "development": {
+    "username": "gukthoqhvggrsg",
+    "password": "621c81a1aa388a033d64c3c9e5d82658aeb0f59d1284079aeecc701c2d739f97",
+    "database": "d7b9alq02898m3",
+    "host": "ec2-79-125-12-48.eu-west-1.compute.amazonaws.com",
+    "port": 5432,
+    "dialect": "postgres",
+    "extra": {
+      "ssl": true
+    }
+  },
+  "production": {
+    "use_env_variable": "DATABASE_URL"
+  }
+}

@@ -4,6 +4,9 @@
   "description": "humper-server",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "server": "node index.js"
+  },
   "dependencies": {
     "bcrypt": "^2.0.1",
     "body-parser": "^1.18.3",

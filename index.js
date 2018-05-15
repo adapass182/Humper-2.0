@@ -5,6 +5,11 @@ const usersRouter = require('./users/router')
 const verify = require('./jwt').verify
 const User = require('./users/model')
 
+// instruct node to serve client/build on heroku
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+}
+
 const app = express()
 app.use(bodyParser.json())
 
