@@ -7,8 +7,8 @@ class TopDogs extends PureComponent {
 	render() {
 		return (
       <li className="TopDogs">
-        <p className="breed">{breed}</p>
-        <p className="value">{value}</p>
+        <p className="breed">breed</p>
+        <p className="value">value</p>
       </li>
 		)
 	}

@@ -7,8 +7,7 @@ class MatchesList extends PureComponent {
 	render() {
 		return (
       <li className="Matches">
-        <p className="name">{name}</p>
-        <p className="topDog">{topDog}</p>
+        <p>TopDogs!</p>
       </li>
 		)
 	}
