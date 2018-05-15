@@ -3,5 +3,10 @@
   "version": "1.0.0",
   "description": "humper-server",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.3",
+    "pg": "6",
+    "sequelize": "^4.37.7"
+  }
 }
