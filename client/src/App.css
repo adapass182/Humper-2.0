@@ -1,0 +1,56 @@
+
+.App {
+  text-align: center;
+}
+
+
+.App-header {
+  background-color: red;
+  height: 100px;
+  padding: 0;
+  color: white;
+  margin:0;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+
+
+
+
+
+
+
+
+.voteButtonContainer{
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+.voteButton {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  color: white;
+  border: none;
+  font-size: large;
+  margin-bottom: 10px;
+}
+
+#likeButton {
+  background-color: green;
+  margin-right: 50px;
+  margin-left: auto;
+}
+
+#dislikeButton {
+  margin-left: 50px;
+  background-color: red;
+}
