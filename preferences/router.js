@@ -38,30 +38,48 @@ router.post('/preferences', requireUser, (req, res) => {
   })
 })
 
-router.put('/preferences/:id', requireUser, (req, res) => {
-  const preferenceId = Number(req.params.id)
-  const updates = req.body
+// NOT IMPLEMENTING AN UPDATE SINCE WE CAN REDUCE THE VALS FOR DUPLICATE RECORDS ON THE GET
 
-  console.log(`The user that's editing this product has ID = ${req.user.id}`)
-  Preference.findById(req.params.id)
-    .then(entity => {
-      if (entity.userId !== req.user.id) {
-        res.status(403).send({
-          message: "You're not allowed to edit this preference!"
-        })
-      } else {
-        return entity.update(updates)
-      }
-    })
-    .then(final => {
-      res.send(final)
-    })
-    .catch(error => {
-      res.status(500).send({
-        message: `Something went wrong`,
-        error
-      })
-    })
-})
+// router.put('/preferences', requireUser, (req, res) => {
+//   const preference = req.body
+//   preference.userId = req.user.id
+//   const updateVal = req.params.val
+
+//   Preference.update(
+//     { val: sequelize.literal('val+${updateVal}') },
+//     { where: { userId: preference.userId, breed: preference.breed } }
+//   )
+//     .then(entity => {
+//       res.status(201).send(entity)
+//     })
+//     .catch(error => {
+//       res.status(500).send({
+//         message: `Something went wrong`,
+//         error
+//       })
+//     })
+// })
+
+//   console.log(`The user that's editing this product has ID = ${req.user.id}`)
+//   Preference.findById(req.params.id)
+//     .then(entity => {
+//       if (entity.userId !== req.user.id) {
+//         res.status(403).send({
+//           message: "You're not allowed to edit this preference!"
+//         })
+//       } else {
+//         return entity.update(updates)
+//       }
+//     })
+//     .then(final => {
+//       res.send(final)
+//     })
+//     .catch(error => {
+//       res.status(500).send({
+//         message: `Something went wrong`,
+//         error
+//       })
+//     })
+// })
 
 module.exports = router
