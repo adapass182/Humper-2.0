@@ -10,15 +10,25 @@ import MatchesPage_component from '../components/MatchesPage_component'
 import ProfilePage_component from '../components/ProfilePage_component'
 // import { setCurrentPage } from '../actions/setCurrentPage'
 
-export default class MainContainer extends PureComponent {
-  state = {
-    currentPage: 'main'
+class MainContainer extends PureComponent {
+  constructor(props) {
+    super(props)
+    this.state = { currentPage: 'main' }
   }
-  static propTypes = {
-    currentPage: PropTypes.string.isRequired
-  }
+  // state = {
+  //   currentPage: 'main'
+  // }
+
+  // PROP-TYPES are only related to props passed in from state, either Redux state or parent state.
+
+  // static propTypes = {
+  //   currentPage: PropTypes.string.isRequired
+  // }
 
   pageview = () => {
+    if (!this.props.loginSuccess) {
+      return <LoginForm_component />
+    }
     if (this.state.currentPage === 'login') {
       return <LoginForm_component />
     }
@@ -66,11 +76,12 @@ export default class MainContainer extends PureComponent {
           </button>
         </div>
       </div>
-<<<<<<< HEAD
     )
   }
 }
-=======
-    )}
-  }
->>>>>>> 22b7f2f94334c30f0372b55cb4b6a88e7773daf8
+
+const mapStateToProps = state => {
+  return { loginSuccess: state.loginSuccess }
+}
+
+export default connect(mapStateToProps)(MainContainer)
