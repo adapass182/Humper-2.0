@@ -1,0 +1,16 @@
+{
+  "development": {
+    "username": "pasklvdrbyfdkb",
+    "password": "e9c3e61a73894ae4bdb8a7727504ab6aca4541596143ba8ff8371c9ce606a199",
+    "database": "de2ui39ibjjcq",
+    "host": "ec2-54-247-81-88.eu-west-1.compute.amazonaws.com",
+    "port": 5432,
+    "dialect": "postgres",
+    "extra": {
+      "ssl": true
+    }
+  },
+  "production": {
+    "use_env_variable": "DATABASE_URL"
+  }
+}
