@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
-import login from '../actions/users'
+import { login } from '../actions/users'
 
 class LoginForm extends PureComponent {
   state = {}

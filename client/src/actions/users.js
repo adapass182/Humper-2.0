@@ -8,7 +8,7 @@ export const USER_LOGIN_FAILED = 'USER_LOGIN_FAILED'
 
 export const login = (email, password) => dispatch => {
   request
-    .post(`${baseURL}/login`)
+    .post(`${baseURL}/logins`)
     .send({ email, password })
     .then(result => {
       dispatch({
