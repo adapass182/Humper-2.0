@@ -5,6 +5,7 @@ const usersRouter = require('./users/router')
 const verify = require('./jwt').verify
 const User = require('./users/model')
 
+const port = process.env.PORT || 8080
 
 const app = express()
 app.use(bodyParser.json())
@@ -14,7 +15,7 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
 }
 
-app.listen(4001, () => console.log('Express API listening on port 4001'))
+app.listen(port, () => console.log(`Express API listening on port ${port}`))
 
 app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*')
