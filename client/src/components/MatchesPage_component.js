@@ -10,14 +10,7 @@ class MatchesPage extends PureComponent {
 		return (
 			<div>
 				<h1>Your matches</h1>
-        <ul>
-          {this.state.usersMatches.map( object =>
-            <MatchesList
-              key={}
-              name={object.name}
-              topDog={object.topDog}
-            />)}
-        </ul>
+      <h2>Matches page!</h2>
 			</div>
 		)
 	}

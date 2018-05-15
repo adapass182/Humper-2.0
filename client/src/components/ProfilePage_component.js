@@ -17,14 +17,6 @@ class ProfilePage extends PureComponent {
           <li>Some other user info</li>
         </ul>
         <h2>Top dogs</h2>
-        <ul>
-          {this.state.likeOrDislike.map( object =>
-            <TopDogs
-              key={}
-              breed={object.breed}
-              value={object.value}
-            />)}
-        </ul>
 			</div>
 		)
 	}
