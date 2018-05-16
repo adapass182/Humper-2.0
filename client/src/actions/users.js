@@ -17,7 +17,6 @@ export const login = (email, password) => dispatch => {
     .post(`${baseUrl}/logins`)
     .send({ email, password })
     .then(result => {
-      console.log(result.body)
       dispatch({
         type: USER_LOGIN_SUCCESS,
         payload: result.body
@@ -78,10 +77,9 @@ export const getUserStats = () => (dispatch, getState) => {
     .get(`${baseUrl}/users`)
     .set('Authorization', `Bearer ${jwt}`)
     .then(result => {
-      console.log(result)
       dispatch({
         type: FETCHED_USER_STATS,
-        payload: result.body
+        payload: result.body.length
       })
     })
 }

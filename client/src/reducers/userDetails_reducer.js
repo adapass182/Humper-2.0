@@ -4,7 +4,6 @@ import { FETCHED_PREFS } from '../actions/rateDog'
 export default function(state = null, action) {
   switch (action.type) {
     case USER_LOGIN_SUCCESS:
-      console.log(action.payload)
       return {
         name: `${action.payload.firstname} ${action.payload.lastname}`,
         username: action.payload.username,

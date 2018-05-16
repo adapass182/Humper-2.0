@@ -36,11 +36,10 @@ export const getPrefs = () => (dispatch, getState) => {
     .get(`${baseUrl}/preferences`)
     .set('Authorization', `Bearer ${jwt}`)
     .then(response => {
-      response => console.log(response),
-        dispatch({
-          type: FETCHED_PREFS,
-          payload: response.body
-        })
+      dispatch({
+        type: FETCHED_PREFS,
+        payload: response.body
+      })
     })
     .catch(err => alert(err))
 }
@@ -65,11 +64,10 @@ export const getDogStats = () => (dispatch, getState) => {
   request
     .get(`${baseUrl}/preferences`)
     .set('Authorization', `Bearer ${jwt}`)
-    .then(response => {
-      console.log(response)
+    .then(result => {
       dispatch({
         type: FETCHED_DOG_STATS,
-        payload: response.body
+        payload: result.body.length
       })
     })
 }

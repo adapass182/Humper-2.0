@@ -7,16 +7,12 @@ Main container contains:
 - left and right sidebar
 */
 
-
-
-
 .MainContainer {
   /*entire main container, contains all other elements */
   text-align: center;
   max-width: 360px;
   max-height: 640px;
 }
-
 
 /*header styling----------------------------------- */
 
@@ -34,7 +30,7 @@ Main container contains:
 }
 
 .App-title {
-/* text inside header */
+  /* text inside header */
   padding: auto auto;
   margin-left: 10px;
 }
@@ -45,7 +41,6 @@ Main container contains:
   max-width: auto;
   margin-left: 10px;
 }
-
 
 /*footer styling----------------------------------- */
 
@@ -59,19 +54,19 @@ Main container contains:
 }
 
 .navButton {
-    height: 50px;
-    width: 33.3%;
-    background-color: white;
-    border: none;
-    border-top: 1px solid lightgrey;
-    color: red;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
+  height: 50px;
+  width: 33.3%;
+  background-color: white;
+  border: none;
+  border-top: 1px solid lightgrey;
+  color: red;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 }
 
 #rateADogButton {
-      border-right: 1px solid lightgrey;
-      border-left: 1px solid lightgrey;
+  border-right: 1px solid lightgrey;
+  border-left: 1px solid lightgrey;
 }
