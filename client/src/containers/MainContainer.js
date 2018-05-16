@@ -13,7 +13,7 @@ import { login, noUser } from '../actions/users'
 class MainContainer extends PureComponent {
   constructor(props) {
     super(props)
-    this.state = { currentPage: 'main' }
+    this.state = { currentPage: 'matches' }
   }
 
   componentWillMount() {
