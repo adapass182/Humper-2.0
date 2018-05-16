@@ -8,6 +8,11 @@ h1 {
   font-family: 'Lobster', cursive;
 }
 
+h2 {
+  font-size: 3em;
+  color: lightgrey;
+  font-family: 'Lobster', cursive;
+}
 p, button {
   font-family: 'Comfortaa', cursive;
 }

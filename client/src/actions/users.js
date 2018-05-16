@@ -10,6 +10,7 @@ export const USER_LOGIN_FAILED = 'USER_LOGIN_FAILED'
 export const USER_REGISTER_SUCCESS = 'USER_REGISTER_SUCCESS'
 export const USER_REGISTER_FAILED = 'USER_REGISTER_FAILED'
 export const NO_USER = 'NO_USER'
+export const FETCHED_USER_STATS = 'FETCHED_USER_STATS'
 
 export const login = (email, password) => dispatch => {
   request
@@ -67,4 +68,20 @@ export const noUser = () => {
   return {
     type: NO_USER
   }
+}
+
+export const getUserStats = () => (dispatch, getState) => {
+  const state = getState()
+  const jwt = state.loginSuccess.jwt
+
+  request
+    .get(`${baseUrl}/users`)
+    .set('Authorization', `Bearer ${jwt}`)
+    .then(result => {
+      console.log(result)
+      dispatch({
+        type: FETCHED_USER_STATS,
+        payload: result.body
+      })
+    })
 }

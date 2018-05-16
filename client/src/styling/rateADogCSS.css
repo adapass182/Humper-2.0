@@ -1,24 +1,8 @@
-/* .dogPicContainer {
-  border: 1px solid green; */
-  /* height: 100%; */
-  /* padding: 80px 0; */
-  /* display: flex;
-  align-content: center; */
-
-/* } */
-
-
-
-
 .dogPic {
   align-self: center;
   margin-top: 20px;
-  border: 0px solid red;
   border-radius: 3%;
   width:  70%;
-  /* eight: 400px; */
-  background-repeat:   no-repeat;
-  background-size:     cover;
 }
 
 
@@ -51,5 +35,4 @@
   border: 2px solid red;
   color: red;
   margin-left: 50px;
-
 }

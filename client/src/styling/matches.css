@@ -1,0 +1,24 @@
+.matchesPageContainer {
+  border: 1px solid red;
+  max-width: 75%;
+  height:100%;
+}
+
+.matchesPage {
+  border: 1px solid green;
+  /* display: flex;
+  flex-direction: column; */
+  align-items: center;
+}
+
+.userCardContainer {
+  margin: auto;
+  border-radius: 10px;
+  border: 1px solid lightgrey;
+  display: flex;
+  margin-bottom: 2px;
+}
+
+.userAvatar {
+  height: 40px;
+}

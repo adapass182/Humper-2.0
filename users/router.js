@@ -5,6 +5,22 @@ const sign = require('../jwt').sign
 
 const router = new Router()
 
+const requireUser = (req, res, next) => {
+  if (req.user) next()
+  else
+    res.status(401).send({
+      message: 'Please login'
+    })
+}
+
+router.get('/users', requireUser, (req, res) => {
+  User.findAll()
+    .then(result => res.send(result))
+    .catch(err => {
+      res.status(500).send({ error: 'Something went wrong with Postgres' })
+    })
+})
+
 router.post('/users', (req, res) => {
   const user = {
     email: req.body.email,

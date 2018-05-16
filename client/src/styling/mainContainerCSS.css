@@ -21,7 +21,7 @@ Main container contains:
 /*header styling----------------------------------- */
 
 .headerContainer {
-  /* container for title, logo, displays alwas on top of screen */
+  /* container for title, logo, displays always on top of screen */
   display: flex;
   border-bottom: 1px solid lightgrey;
   align-items: center;
@@ -35,7 +35,7 @@ Main container contains:
 
 .App-title {
 /* text inside header */
-  padding: auto auto;
+  /* padding: auto; */
   margin-left: 10px;
 }
 
@@ -50,9 +50,6 @@ Main container contains:
 /*footer styling----------------------------------- */
 
 .footer {
-  /* container for navButtons, always displays on bottom of page */
-  /* display: flex; */
-  height: 50px;
   width: 100%;
   background-color: white;
   position: absolute;
@@ -61,7 +58,7 @@ Main container contains:
 
 .navButton {
     height: 50px;
-    width: 33.3%;
+    width: 25%;
     background-color: white;
     border: none;
     border-top: 1px solid lightgrey;
@@ -75,4 +72,7 @@ Main container contains:
 #rateADogButton {
       border-right: 1px solid lightgrey;
       border-left: 1px solid lightgrey;
+}
+#adminButton {
+    border-left: 1px solid lightgrey;
 }
