@@ -15,65 +15,27 @@ const requireUser = (req, res, next) => {
 }
 
 router.get('/matches', requireUser, (req, res) => {
-  const preference = req.body
-  preference.userId = req.user.id
-
-  // get total number of likes of current user 
-  //sequelize.query(`select "userId", val, count(*) as ct from preferences where "userId" = ${req.user.id} AND val = 1 group by "userId", val`,{ type: sequelize.QueryTypes.SELECT})   
-//sequelize.query(`select "userId", val, breed, count(*) as ct from preferences where "userId" = 2 AND val = 1 group by "userId", breed, val order by ct desc`, { type: sequelize.QueryTypes.SELECT})
-  // get total number of likes of all users 
-  //`select "userId", val, count(*) as ct from preferences where val = 1 group by "userId", val`  
+  
+  // MVP version user story:
+  // As a doglover I want to be matched to another “random” user that has liked a similar number of dogs so I can find a person who is as interested in dogs as I am
   //
-  // get total likes per user
-  //const pgQuery = `select a."userId", a.val, b.email, count(*) as ct from preferences a join users b on a."userId" = b.id where val = 1 group by a."userId", a.val, b.email order by ct desc`
-
-  const likesPerUserQuery = `select "userId", val, count(*) as ct from preferences where val = 1 group by "userId", val` 
-  const mailPerId = `select id, email from users`
-
-  sequelize.query(likesPerUserQuery, {type: sequelize.QueryTypes.SELECT})
-    .then(likesPerUser => {
-      console.log(likesPerUser)
-      
-      sequelize.query(mailPerId, {type: sequelize.QueryTypes.SELECT})
-        .then(mailPerId => {
-          console.log(mailPerId)
-        
-          const mapIdToMail = likesPerUser.map(user => {
-            return mailPerId.find(elem => {
-              return elem.id === user.userId 
-            })
-          })
-          console.log(JSON.stringify(mapIdToMail))
-
-          // create a new object of arrays, combine likesPerUser and mapIdToMail
-          // this way we get the users and preferences table combined
-          let arr3 = []
-          likesPerUser.forEach((itm, i) => {
-            arr3.push(Object.assign({}, itm, mapIdToMail[i]))
-          })
-          console.log(arr3)
-
-          res.send(arr3)
-
-
-        })
-        .catch(err => {
-          console.log(err)
-          res.status(500).send({ error: 'Something went wrong with Postgres' })
-        })
-
-
-
-      //res.send(likesPerUser)
+  // get sum of likes per user
+  sequelize.query(
+    `SELECT a."userId", a.val, b.email, b.firstname, b.lastname, COUNT(*) AS ct
+    FROM preferences a
+    JOIN users b
+    ON a."userId" = b.id
+    WHERE val = 1
+    GROUP BY a."userId", a.val, b.email, b.firstname, b.lastname
+    ORDER BY ct DESC`,
+    { type: sequelize.QueryTypes.SELECT }
+  )
+    .then(result => {
+      console.log(result)
     })
     .catch(err => {
       console.log(err)
-      res.status(500).send({ error: 'Something went wrong with Postgres' })
     })
-
-
-
-
 })
 
 module.exports = router
