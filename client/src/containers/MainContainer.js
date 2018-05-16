@@ -1,14 +1,11 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import Main from './Main'
-import Test from './Test'
-import { setCurrentPage } from '../actions/setCurrentPage'
 import { connect } from 'react-redux'
 import Viewer from './Viewer'
-import LoginForm_component from '../components/LoginForm_component'
-import RegisterForm_component from '../components/RegisterForm_component'
-import MatchesPage_component from '../components/MatchesPage_component'
-import ProfilePage_component from '../components/ProfilePage_component'
+import LoginForm from '../components/LoginForm_component'
+import RegisterForm from '../components/RegisterForm_component'
+import MatchesPage from '../components/MatchesPage_component'
+import ProfilePage from '../components/ProfilePage_component'
 import { login, noUser } from '../actions/users'
 // import { setCurrentPage } from '../actions/setCurrentPage'
 
@@ -26,28 +23,25 @@ class MainContainer extends PureComponent {
   // static propTypes = {
   //   currentPage: PropTypes.string.isRequired
   // }
-  componentWillMount() {
-    this.props.login('secondUser@humper.com', 'password')
-  }
+  // componentWillMount() {
+  //   this.props.login('secondUser@humper.com', 'password')
+  // }
 
   pageview = () => {
     if (!this.props.loginSuccess && this.props.userExists) {
-      return <LoginForm_component />
+      return <LoginForm />
     }
     if (!this.props.loginSuccess && !this.props.userExists) {
-      return <RegisterForm_component />
+      return <RegisterForm />
     }
-    // if (this.state.currentPage === 'register') {
-    //   return <RegisterForm_component />
-    // }
     if (this.state.currentPage === 'main') {
       return <Viewer />
     }
     if (this.state.currentPage === 'profile') {
-      return <ProfilePage_component />
+      return <ProfilePage />
     }
     if (this.state.currentPage === 'matches') {
-      return <MatchesPage_component />
+      return <MatchesPage />
     }
   }
 

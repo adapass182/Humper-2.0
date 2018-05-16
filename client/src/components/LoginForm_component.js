@@ -1,6 +1,9 @@
 import React, { PureComponent } from 'react'
+
 import { connect } from 'react-redux'
 import { login } from '../actions/users'
+
+import FirstLogin from './FirstLogin_component'
 
 class LoginForm extends PureComponent {
   state = {}
@@ -21,31 +24,34 @@ class LoginForm extends PureComponent {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <div>
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            value={this.state.email || ''}
-            onChange={this.handleChange}
-          />
-        </div>
+      <div>
+        <FirstLogin />
+        <form onSubmit={this.handleSubmit}>
+          <div>
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              value={this.state.email || ''}
+              onChange={this.handleChange}
+            />
+          </div>
 
-        <div>
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            value={this.state.password || ''}
-            onChange={this.handleChange}
-          />
-        </div>
+          <div>
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              value={this.state.password || ''}
+              onChange={this.handleChange}
+            />
+          </div>
 
-        <button type="submit">Login</button>
-      </form>
+          <button type="submit">Login</button>
+        </form>
+      </div>
     )
   }
 }
