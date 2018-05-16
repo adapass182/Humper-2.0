@@ -5,6 +5,7 @@ import loginSuccess from './loginSuccess_reducer'
 import loginFailed from './loginFailed_reducer'
 import registerSuccess from './userRegistration_reducer'
 import userExists from './userExists_reducer'
+import userDetails from './userDetails_reducer'
 
 export default {
   likeDislike,
@@ -13,5 +14,6 @@ export default {
   loginFailed,
   currentPage,
   registerSuccess,
-  userExists
+  userExists,
+  userDetails
 }
