@@ -7,13 +7,8 @@ class RateADog extends PureComponent {
 
   componentWillMount() {
     if (this.props.pullFirstDogState) {
-      console.log(`First dog:` + this.props.pullFirstDogState)
       this.props.getDog()
       this.props.pullFirstDog()
-      console.log(`First dog pls`)
-    }
-    if (!this.props.pullFirstDogState) {
-      console.log(`No more dog pls`)
     }
   }
 
