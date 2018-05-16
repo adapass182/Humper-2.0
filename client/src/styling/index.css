@@ -7,9 +7,9 @@ It imports:
 - recetCSS
     resets the css sheet so we start with a clean stylesheet
 -  baseSty
-    the base css. styling only the base elements (<p>, <div> etc.) 
+    the base css. styling only the base elements (<p>, <div> etc.)
 */
 
 @import "./resetCSS.css";
-
+@import "./mainContainerCSS.css";
 @import "./baseStyling.css";

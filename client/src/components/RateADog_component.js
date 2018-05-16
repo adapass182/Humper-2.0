@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { getDog, rateDog } from '../actions/rateDog'
 
-class Viewer extends PureComponent {
+class RateADog extends PureComponent {
   componentWillMount() {
     this.props.getDog()
   }
@@ -44,4 +44,4 @@ function mapStateToProps({ fetchedImage }) {
   return { fetchedImage }
 }
 
-export default connect(mapStateToProps, { getDog, rateDog })(Viewer)
+export default connect(mapStateToProps, { getDog, rateDog })(RateADog)
