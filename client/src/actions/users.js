@@ -11,6 +11,7 @@ export const USER_REGISTER_SUCCESS = 'USER_REGISTER_SUCCESS'
 export const USER_REGISTER_FAILED = 'USER_REGISTER_FAILED'
 export const NO_USER = 'NO_USER'
 export const FETCHED_USER_STATS = 'FETCHED_USER_STATS'
+export const PULL_FIRST_DOG = 'PULL_FIRST_DOG'
 
 export const login = (email, password) => dispatch => {
   request
@@ -32,6 +33,12 @@ export const login = (email, password) => dispatch => {
         console.error(err)
       }
     })
+}
+
+export const pullFirstDog = () => {
+  return {
+    type: PULL_FIRST_DOG,
+  }
 }
 
 export const register = (email, password, password_confirm) => dispatch => {
