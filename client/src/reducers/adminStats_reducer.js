@@ -5,13 +5,13 @@ export default (state = { totalUsers: 0, totalDogs: 0 }, { type, payload }) => {
   switch (type) {
     case FETCHED_USER_STATS:
       return {
-        totalUsers: state.totalUsers,
+        totalUsers: payload,
         totalDogs: state.totalDogs
       }
     case FETCHED_DOG_STATS:
       return {
         totalUsers: state.totalUsers,
-        totalDogs: state.totalDogs
+        totalDogs: payload
       }
     default:
       return state

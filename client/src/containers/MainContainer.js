@@ -27,7 +27,6 @@ class MainContainer extends PureComponent {
     if (!this.props.loginSuccess && !this.props.userExists) {
       return <RegisterForm className="content" />
     }
-
     if (this.state.currentPage === 'rateADog') {
       return <RateADog className="content" id="dogPic" />
     }
@@ -94,7 +93,10 @@ class MainContainer extends PureComponent {
                 matches
               </button>
               {this.props.userDetails.admin && (
-                <button name="admin" onClick={this.handleClick}>
+                <button
+                  name="admin"
+                  className="navButton"
+                  onClick={this.handleClick}>
                   admin
                 </button>
               )}
@@ -102,7 +104,10 @@ class MainContainer extends PureComponent {
           )}
           {!this.props.loginSuccess &&
             this.props.userExists && (
-              <button name="register" onClick={this.handleClickUser}>
+              <button
+                name="register"
+                className="navButton"
+                onClick={this.handleClickUser}>
                 Create Account
               </button>
             )}

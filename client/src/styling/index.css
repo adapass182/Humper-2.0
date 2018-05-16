@@ -10,7 +10,7 @@ It imports:
     the base css. styling only the base elements (<p>, <div> etc.)
 */
 
-@import "./resetCSS.css";
-@import "./mainContainerCSS.css";
-@import "./baseStyling.css";
-@import "./rateADogCSS.css";
+@import './resetCSS.css';
+@import './mainContainerCSS.css';
+@import './baseStyling.css';
+@import './rateADogCSS.css';
