@@ -1,15 +1,13 @@
 import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
-import { setCurrentPage } from '../actions/setCurrentPage'
 import { connect } from 'react-redux'
-import RateADog_component from '../components/RateADog_component'
-import LoginForm_component from '../components/LoginForm_component'
-import RegisterForm_component from '../components/RegisterForm_component'
-import MatchesPage_component from '../components/MatchesPage_component'
-import ProfilePage_component from '../components/ProfilePage_component'
 import { login, noUser } from '../actions/users'
 // import humperIcon from "../images/humperIcon"
 
+import LoginForm from '../components/LoginForm_component'
+import RegisterForm from '../components/RegisterForm_component'
+import MatchesPage from '../components/MatchesPage_component'
+import ProfilePage from '../components/ProfilePage_component'
+import RateADog from '../components/RateADog_component'
 
 class MainContainer extends PureComponent {
   constructor(props) {
@@ -21,8 +19,10 @@ class MainContainer extends PureComponent {
     this.props.login('secondUser@humper.com', 'password')
   }
 
+
   pageview = () => {
     if (!this.props.loginSuccess && this.props.userExists) {
+
       return <LoginForm_component className="content"/>
     }
     if (!this.props.loginSuccess && !this.props.userExists) {
@@ -37,6 +37,7 @@ class MainContainer extends PureComponent {
     }
     if (this.state.currentPage === 'matches') {
       return <MatchesPage_component className="content"/>
+
     }
   }
 
@@ -86,9 +87,9 @@ class MainContainer extends PureComponent {
               </button>
             </div>
           )}
-          {!this.props.loginSuccess && (
+          {!this.props.loginSuccess && this.props.userExists && (
             <button name="register" onClick={this.handleClickUser}>
-              register
+              Create Account
             </button>
           )}
         </div>
