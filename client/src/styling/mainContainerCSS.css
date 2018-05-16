@@ -51,6 +51,7 @@ Main container contains:
 
 .footer {
   /* container for navButtons, always displays on bottom of page */
+  /* display: flex; */
   height: 50px;
   width: 100%;
   background-color: white;

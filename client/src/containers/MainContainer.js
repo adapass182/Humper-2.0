@@ -23,20 +23,20 @@ class MainContainer extends PureComponent {
   pageview = () => {
     if (!this.props.loginSuccess && this.props.userExists) {
 
-      return <LoginForm_component className="content"/>
+      return <LoginForm className="content"/>
     }
     if (!this.props.loginSuccess && !this.props.userExists) {
-      return <RegisterForm_component className="content" />
+      return <RegisterForm className="content" />
     }
 
     if (this.state.currentPage === 'rateADog') {
-      return <RateADog_component className="content" id="dogPic"/>
+      return <RateADog className="content" id="dogPic"/>
     }
     if (this.state.currentPage === 'profile') {
-      return <ProfilePage_component className="content" />
+      return <ProfilePage className="content" />
     }
     if (this.state.currentPage === 'matches') {
-      return <MatchesPage_component className="content"/>
+      return <MatchesPage className="content"/>
 
     }
   }
