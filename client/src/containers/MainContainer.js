@@ -62,18 +62,24 @@ class MainContainer extends PureComponent {
 
         <div id="rightSpace" />
         <div id="footer">
-          <button name="profile" onClick={this.handleClick}>
-            profile
-          </button>
-          <button name="main" onClick={this.handleClick}>
-            dogs
-          </button>
-          <button name="matches" onClick={this.handleClick}>
-            matches
-          </button>
-          <button name="login" onClick={this.handleClick}>
-            login
-          </button>
+          {this.props.loginSuccess && (
+            <div>
+              <button name="profile" onClick={this.handleClick}>
+                profile
+              </button>
+              <button name="main" onClick={this.handleClick}>
+                dogs
+              </button>
+              <button name="matches" onClick={this.handleClick}>
+                matches
+              </button>
+            </div>
+          )}
+          {!this.props.loginSuccess && (
+            <button name="login" onClick={this.handleClick}>
+              login
+            </button>
+          )}
         </div>
       </div>
     )
