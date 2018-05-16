@@ -1,14 +1,13 @@
 import * as request from 'superagent'
 
-//NOTE: need to update base URL to match server development:
-const baseURL = 'http://localhost:8080'
+const baseUrl = process.env.baseURL || 'http://localhost:8080'
 
 export const USER_LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS'
 export const USER_LOGIN_FAILED = 'USER_LOGIN_FAILED'
 
 export const login = (email, password) => dispatch => {
   request
-    .post(`${baseURL}/logins`)
+    .post(`${baseUrl}/logins`)
     .send({ email, password })
     .then(result => {
       dispatch({
