@@ -8,19 +8,37 @@ export const FETCHED_IMAGE = 'FETCHED_IMAGE'
 export const LIKE_DOG = 'LIKE_DOG'
 export const DISLIKE_DOG = 'DISLIKE_DOG'
 export const POSTED_BREED = 'POSTED_BREED'
+export const FETCHED_PREFS = 'FETCHED_PREFS'
 
 export const getDog = () => dispatch => {
   request
     .get(`${dogApiUrl}`)
     .then(response =>
       dispatch({
-        type: 'FETCHED_IMAGE',
+        type: FETCHED_IMAGE,
         payload: {
           img: response.body.message,
           breed: response.body.message.split('/')[4]
         }
       })
     )
+    .catch(err => alert(err))
+}
+
+export const getPrefs = () => (dispatch, getState) => {
+  const state = getState()
+  const jwt = state.loginSuccess.jwt
+
+  request
+    .get(`${baseUrl}/preferences`)
+    .set('Authorization', `Bearer ${jwt}`)
+    .then(response => {
+      response => console.log(response),
+        dispatch({
+          type: FETCHED_PREFS,
+          payload: response.body
+        })
+    })
     .catch(err => alert(err))
 }
 
