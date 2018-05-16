@@ -6,6 +6,7 @@ import loginFailed from './loginFailed_reducer'
 import registerSuccess from './userRegistration_reducer'
 import userExists from './userExists_reducer'
 import userDetails from './userDetails_reducer'
+import matches from './matches_reducer'
 
 export default {
   likeDislike,
@@ -15,5 +16,6 @@ export default {
   currentPage,
   registerSuccess,
   userExists,
-  userDetails
+  userDetails,
+  matches
 }
