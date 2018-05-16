@@ -1,11 +1,6 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
-import RateADog_component from '../components/RateADog_component'
-import LoginForm_component from '../components/LoginForm_component'
-import RegisterForm_component from '../components/RegisterForm_component'
-import MatchesPage_component from '../components/MatchesPage_component'
-import ProfilePage_component from '../components/ProfilePage_component'
-import AdminDashboard_component from '../components/AdminDashboard_component'
+import AdminDashboard from '../components/AdminDashboard_component'
 import { login, noUser } from '../actions/users'
 // import humperIcon from "../images/humperIcon"
 
@@ -25,28 +20,25 @@ class MainContainer extends PureComponent {
     this.props.login('secondUser@humper.com', 'password')
   }
 
-
   pageview = () => {
     if (!this.props.loginSuccess && this.props.userExists) {
-
-      return <LoginForm_component className="content"/>
+      return <LoginForm className="content" />
     }
     if (!this.props.loginSuccess && !this.props.userExists) {
-      return <RegisterForm_component className="content" />
+      return <RegisterForm className="content" />
     }
 
     if (this.state.currentPage === 'rateADog') {
-      return <RateADog_component className="content" id="dogPic"/>
+      return <RateADog className="content" id="dogPic" />
     }
     if (this.state.currentPage === 'profile') {
-      return <ProfilePage_component className="content" />
+      return <ProfilePage className="content" />
     }
     if (this.state.currentPage === 'matches') {
-      return <MatchesPage_component className="content"/>
-
+      return <MatchesPage className="content" />
     }
     if (this.state.currentPage === 'admin') {
-      return <AdminDashboard_component />
+      return <AdminDashboard />
     }
   }
 
@@ -65,34 +57,40 @@ class MainContainer extends PureComponent {
   render() {
     return (
       <div className="MainContainer">
-
         <header className="headerContainer">
           <h1 className="App-title">Humper</h1>
-          <img  src={require("../images/humperIcon.png")} className="humperIcon"/>
+          <img
+            src={require('../images/humperIcon.png')}
+            className="humperIcon"
+          />
         </header>
-
 
         <div id="leftSpace" />
 
-
         {this.pageview()}
-
 
         <div id="rightSpace" />
 
-
-
         <div className="footer">
           {this.props.loginSuccess && (
-
-            <div >
-              <button className="navButton" name="profile" onClick={this.handleClick}>
+            <div>
+              <button
+                className="navButton"
+                name="profile"
+                onClick={this.handleClick}>
                 profile
               </button>
-              <button className="navButton" id="rateADogButton" name="rateADog" onClick={this.handleClick}>
+              <button
+                className="navButton"
+                id="rateADogButton"
+                name="rateADog"
+                onClick={this.handleClick}>
                 rate a dog
               </button>
-              <button className="navButton"name="matches" onClick={this.handleClick}>
+              <button
+                className="navButton"
+                name="matches"
+                onClick={this.handleClick}>
                 matches
               </button>
               {this.props.userDetails.admin && (
@@ -102,11 +100,12 @@ class MainContainer extends PureComponent {
               )}
             </div>
           )}
-          {!this.props.loginSuccess && this.props.userExists && (
-            <button name="register" onClick={this.handleClickUser}>
-              Create Account
-            </button>
-          )}
+          {!this.props.loginSuccess &&
+            this.props.userExists && (
+              <button name="register" onClick={this.handleClickUser}>
+                Create Account
+              </button>
+            )}
         </div>
       </div>
     )
