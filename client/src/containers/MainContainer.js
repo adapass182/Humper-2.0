@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { login, noUser } from '../actions/users'
+// import humperIcon from "../images/humperIcon"
 
 import LoginForm from '../components/LoginForm_component'
 import RegisterForm from '../components/RegisterForm_component'
@@ -11,7 +12,7 @@ import RateADog from '../components/RateADog_component'
 class MainContainer extends PureComponent {
   constructor(props) {
     super(props)
-    this.state = { currentPage: 'main' }
+    this.state = { currentPage: 'rateADog' }
   }
 
   componentWillMount() {
@@ -21,19 +22,22 @@ class MainContainer extends PureComponent {
 
   pageview = () => {
     if (!this.props.loginSuccess && this.props.userExists) {
-      return <LoginForm />
+
+      return <LoginForm_component className="content"/>
     }
     if (!this.props.loginSuccess && !this.props.userExists) {
-      return <RegisterForm />
+      return <RegisterForm_component className="content" />
     }
-    if (this.state.currentPage === 'main') {
-      return <RateADog />
+
+    if (this.state.currentPage === 'rateADog') {
+      return <RateADog_component className="content" id="dogPic"/>
     }
     if (this.state.currentPage === 'profile') {
-      return <ProfilePage />
+      return <ProfilePage_component className="content" />
     }
     if (this.state.currentPage === 'matches') {
-      return <MatchesPage />
+      return <MatchesPage_component className="content"/>
+
     }
   }
 
@@ -51,25 +55,34 @@ class MainContainer extends PureComponent {
 
   render() {
     return (
-      <div className="Hcontainer">
-        <header className="App-header">
+      <div className="MainContainer">
+
+        <header className="headerContainer">
           <h1 className="App-title">Humper</h1>
+          <img  src={require("../images/humperIcon.png")} className="humperIcon"/>
         </header>
 
+
         <div id="leftSpace" />
+
+
         {this.pageview()}
 
+
         <div id="rightSpace" />
-        <div id="footer">
+
+
+
+        <div className="footer">
           {this.props.loginSuccess && (
-            <div>
-              <button name="profile" onClick={this.handleClick}>
+            <div >
+              <button className="navButton" name="profile" onClick={this.handleClick}>
                 profile
               </button>
-              <button name="main" onClick={this.handleClick}>
-                dogs
+              <button className="navButton" id="rateADogButton" name="rateADog" onClick={this.handleClick}>
+                rate a dog
               </button>
-              <button name="matches" onClick={this.handleClick}>
+              <button className="navButton"name="matches" onClick={this.handleClick}>
                 matches
               </button>
             </div>
