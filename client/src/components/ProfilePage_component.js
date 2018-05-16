@@ -1,9 +1,6 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
 import { getPrefs } from '../actions/rateDog'
-
-import TopDogs from './TopDogs_component'
 
 class ProfilePage extends PureComponent {
   componentWillMount() {
@@ -15,13 +12,17 @@ class ProfilePage extends PureComponent {
       <div>
         <h2>Account info</h2>
         <ul>
-          <li>Username: {this.props.userDetails.username}</li>
+          <li>Name: {this.props.userDetails.name}</li>
           <li>Email: {this.props.userDetails.username}</li>
         </ul>
         <h2>Top dogs</h2>
         <ul>
           {this.props.userDetails.preferences.map(element => {
-            return <li key={element.id}>{element.breed}</li>
+            return (
+              <li key={element.breed}>
+                Breed: {element.breed}, Score: {element.count}
+              </li>
+            )
           })}
         </ul>
       </div>

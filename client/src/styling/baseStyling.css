@@ -2,14 +2,18 @@
 styling of all the base elements, also fonts
 */
 
-
-
-
 h1 {
   font-size: 4em;
   font-family: 'Lobster', cursive;
 }
 
-p, button {
+h2 {
+  font-size: 2em;
+  font-family: 'Lobster', cursive;
+  padding: 1.2em;
+}
+
+p,
+button {
   font-family: 'Comfortaa', cursive;
 }

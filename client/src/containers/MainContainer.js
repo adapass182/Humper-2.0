@@ -1,19 +1,19 @@
 import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
-import { setCurrentPage } from '../actions/setCurrentPage'
 import { connect } from 'react-redux'
-import RateADog_component from '../components/RateADog_component'
-import LoginForm_component from '../components/LoginForm_component'
-import RegisterForm_component from '../components/RegisterForm_component'
-import MatchesPage_component from '../components/MatchesPage_component'
-import ProfilePage_component from '../components/ProfilePage_component'
+import AdminDashboard from '../components/AdminDashboard_component'
 import { login, noUser } from '../actions/users'
+// import humperIcon from "../images/humperIcon"
 
+import LoginForm from '../components/LoginForm_component'
+import RegisterForm from '../components/RegisterForm_component'
+import MatchesPage from '../components/MatchesPage_component'
+import ProfilePage from '../components/ProfilePage_component'
+import RateADog from '../components/RateADog_component'
 
 class MainContainer extends PureComponent {
   constructor(props) {
     super(props)
-    this.state = { currentPage: 'matches' }
+    this.state = { currentPage: 'rateADog' }
   }
 
   componentWillMount() {
@@ -22,20 +22,22 @@ class MainContainer extends PureComponent {
 
   pageview = () => {
     if (!this.props.loginSuccess && this.props.userExists) {
-      return <LoginForm_component />
+      return <LoginForm className="content" />
     }
     if (!this.props.loginSuccess && !this.props.userExists) {
-      return <RegisterForm_component />
+      return <RegisterForm className="content" />
     }
-
-    if (this.state.currentPage === 'main') {
-      return <RateADog_component />
+    if (this.state.currentPage === 'rateADog') {
+      return <RateADog className="content" id="dogPic" />
     }
     if (this.state.currentPage === 'profile') {
-      return <ProfilePage_component />
+      return <ProfilePage className="content" />
     }
     if (this.state.currentPage === 'matches') {
-      return <MatchesPage_component />
+      return <MatchesPage className="content" />
+    }
+    if (this.state.currentPage === 'admin') {
+      return <AdminDashboard />
     }
   }
 
@@ -53,42 +55,71 @@ class MainContainer extends PureComponent {
 
   render() {
     return (
-      <div className="Hcontainer">
-        <header className="App-header">
+      <div className="MainContainer">
+        <header className="headerContainer">
           <h1 className="App-title">Humper</h1>
+          <img
+            src={require('../images/humperIcon.png')}
+            alt="humper icon"
+            className="humperIcon"
+          />
         </header>
 
         <div id="leftSpace" />
+
         {this.pageview()}
 
         <div id="rightSpace" />
-        <div id="footer">
+
+        <div className="footer">
           {this.props.loginSuccess && (
             <div>
-              <button name="profile" onClick={this.handleClick}>
+              <button
+                className="navButton"
+                name="profile"
+                onClick={this.handleClick}>
                 profile
               </button>
-              <button name="main" onClick={this.handleClick}>
-                dogs
+              <button
+                className="navButton"
+                id="rateADogButton"
+                name="rateADog"
+                onClick={this.handleClick}>
+                rate a dog
               </button>
-              <button name="matches" onClick={this.handleClick}>
+              <button
+                className="navButton"
+                name="matches"
+                onClick={this.handleClick}>
                 matches
               </button>
+              {this.props.userDetails.admin && (
+                <button
+                  name="admin"
+                  className="navButton"
+                  onClick={this.handleClick}>
+                  admin
+                </button>
+              )}
             </div>
           )}
-          {!this.props.loginSuccess && (
-            <button name="register" onClick={this.handleClickUser}>
-              register
-            </button>
-          )}
+          {!this.props.loginSuccess &&
+            this.props.userExists && (
+              <button
+                name="register"
+                className="navButton"
+                onClick={this.handleClickUser}>
+                Create Account
+              </button>
+            )}
         </div>
       </div>
     )
   }
 }
 
-const mapStateToProps = ({ loginSuccess, userExists }) => {
-  return { loginSuccess, userExists }
+const mapStateToProps = ({ loginSuccess, userExists, userDetails }) => {
+  return { loginSuccess, userExists, userDetails }
 }
 
 export default connect(mapStateToProps, { login, noUser })(MainContainer)
