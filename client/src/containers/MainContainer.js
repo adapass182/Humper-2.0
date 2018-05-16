@@ -1,5 +1,11 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
+import RateADog_component from '../components/RateADog_component'
+import LoginForm_component from '../components/LoginForm_component'
+import RegisterForm_component from '../components/RegisterForm_component'
+import MatchesPage_component from '../components/MatchesPage_component'
+import ProfilePage_component from '../components/ProfilePage_component'
+import AdminDashboard_component from '../components/AdminDashboard_component'
 import { login, noUser } from '../actions/users'
 // import humperIcon from "../images/humperIcon"
 
@@ -39,6 +45,9 @@ class MainContainer extends PureComponent {
       return <MatchesPage_component className="content"/>
 
     }
+    if (this.state.currentPage === 'admin') {
+      return <AdminDashboard_component />
+    }
   }
 
   handleClick = e => {
@@ -75,6 +84,7 @@ class MainContainer extends PureComponent {
 
         <div className="footer">
           {this.props.loginSuccess && (
+
             <div >
               <button className="navButton" name="profile" onClick={this.handleClick}>
                 profile
@@ -85,6 +95,11 @@ class MainContainer extends PureComponent {
               <button className="navButton"name="matches" onClick={this.handleClick}>
                 matches
               </button>
+              {this.props.userDetails.admin && (
+                <button name="admin" onClick={this.handleClick}>
+                  admin
+                </button>
+              )}
             </div>
           )}
           {!this.props.loginSuccess && this.props.userExists && (
@@ -98,8 +113,8 @@ class MainContainer extends PureComponent {
   }
 }
 
-const mapStateToProps = ({ loginSuccess, userExists }) => {
-  return { loginSuccess, userExists }
+const mapStateToProps = ({ loginSuccess, userExists, userDetails }) => {
+  return { loginSuccess, userExists, userDetails }
 }
 
 export default connect(mapStateToProps, { login, noUser })(MainContainer)
