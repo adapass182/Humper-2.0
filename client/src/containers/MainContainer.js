@@ -7,8 +7,8 @@ import LoginForm_component from '../components/LoginForm_component'
 import RegisterForm_component from '../components/RegisterForm_component'
 import MatchesPage_component from '../components/MatchesPage_component'
 import ProfilePage_component from '../components/ProfilePage_component'
+import AdminDashboard_component from '../components/AdminDashboard_component'
 import { login, noUser } from '../actions/users'
-
 
 class MainContainer extends PureComponent {
   constructor(props) {
@@ -36,6 +36,9 @@ class MainContainer extends PureComponent {
     }
     if (this.state.currentPage === 'matches') {
       return <MatchesPage_component />
+    }
+    if (this.state.currentPage === 'admin') {
+      return <AdminDashboard_component />
     }
   }
 
@@ -65,15 +68,20 @@ class MainContainer extends PureComponent {
         <div id="footer">
           {this.props.loginSuccess && (
             <div>
-              <button name="profile" onClick={this.handleClick}>
-                profile
-              </button>
               <button name="main" onClick={this.handleClick}>
                 dogs
+              </button>
+              <button name="profile" onClick={this.handleClick}>
+                profile
               </button>
               <button name="matches" onClick={this.handleClick}>
                 matches
               </button>
+              {this.props.userDetails.admin && (
+                <button name="admin" onClick={this.handleClick}>
+                  admin
+                </button>
+              )}
             </div>
           )}
           {!this.props.loginSuccess && (
@@ -87,8 +95,8 @@ class MainContainer extends PureComponent {
   }
 }
 
-const mapStateToProps = ({ loginSuccess, userExists }) => {
-  return { loginSuccess, userExists }
+const mapStateToProps = ({ loginSuccess, userExists, userDetails }) => {
+  return { loginSuccess, userExists, userDetails }
 }
 
 export default connect(mapStateToProps, { login, noUser })(MainContainer)
