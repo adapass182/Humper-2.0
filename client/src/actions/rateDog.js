@@ -21,7 +21,7 @@ export const getDog = () => dispatch => {
         type: FETCHED_IMAGE,
         payload: {
           img: response.body.message,
-          breed: response.body.message.split('/')[4]
+          breed: response.body.message.split('/')[4].split('-')[0]
         }
       })
     )
