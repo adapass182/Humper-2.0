@@ -15,7 +15,7 @@ class ProfilePage extends PureComponent {
       <div>
         <h2>Account info</h2>
         <ul>
-          <li>Username: {this.props.userDetails.username}</li>
+          <li>Name: {this.props.userDetails.name}</li>
           <li>Email: {this.props.userDetails.username}</li>
         </ul>
         <h2>Top dogs</h2>
