@@ -33,7 +33,7 @@ export const getPrefs = () => (dispatch, getState) => {
   const jwt = state.loginSuccess.jwt
 
   request
-    .get(`${baseUrl}/preferences`)
+    .get(`${baseUrl}/preferences/top10`)
     .set('Authorization', `Bearer ${jwt}`)
     .then(response => {
       dispatch({
