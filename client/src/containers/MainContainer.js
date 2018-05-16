@@ -60,6 +60,7 @@ class MainContainer extends PureComponent {
           <h1 className="App-title">Humper</h1>
           <img
             src={require('../images/humperIcon.png')}
+            alt="humper icon"
             className="humperIcon"
           />
         </header>

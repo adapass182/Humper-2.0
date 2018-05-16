@@ -47,7 +47,7 @@ export const getPrefs = () => (dispatch, getState) => {
 export const rateDog = (breed, opinion) => (dispatch, getState) => {
   const state = getState()
   const jwt = state.loginSuccess.jwt
-  const likeOrDislike = opinion === 'Like' ? LIKE_DOG : DISLIKE_DOG
+  // const likeOrDislike = opinion === 'Like' ? LIKE_DOG : DISLIKE_DOG
   const val = opinion === 'Like' ? 1 : -1
 
   request

@@ -1,9 +1,6 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
 import { getPrefs } from '../actions/rateDog'
-
-import TopDogs from './TopDogs_component'
 
 class ProfilePage extends PureComponent {
   componentWillMount() {
