@@ -18,7 +18,11 @@ class ProfilePage extends PureComponent {
         <h2>Top dogs</h2>
         <ul>
           {this.props.userDetails.preferences.map(element => {
-            return <li key={element.id}>{element.breed}</li>
+            return (
+              <li key={element.breed}>
+                Breed: {element.breed}, Score: {element.count}
+              </li>
+            )
           })}
         </ul>
       </div>
