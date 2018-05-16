@@ -16,13 +16,11 @@ router.get('/preferences', requireUser, (req, res) => {
   preference.userId = req.user.id
 
   Preference.findAll({
-    attributes: ['breed', 'val'],
+    attributes: ['breed', 'val', 'id'],
     where: { userId: preference.userId }
   })
     .then(result => {
-      res.send({
-        preferences: result
-      })
+      res.send(result)
     })
     .catch(err => {
       res.status(500).send({ error: 'Something went wrong with Postgres' })
