@@ -33,7 +33,7 @@ export const login = (email, password) => dispatch => {
 export const register = (email, password, password_confirm) => dispatch => {
   if (password === password_confirm) {
     request
-      .post(`${baseURL}/users`)
+      .post(`${baseUrl}/users`)
       .send({ email, password })
       .then(result => {
         dispatch({

@@ -9,7 +9,7 @@ import LoginForm_component from '../components/LoginForm_component'
 import RegisterForm_component from '../components/RegisterForm_component'
 import MatchesPage_component from '../components/MatchesPage_component'
 import ProfilePage_component from '../components/ProfilePage_component'
-import { noUser } from '../actions/users'
+import { login, noUser } from '../actions/users'
 // import { setCurrentPage } from '../actions/setCurrentPage'
 
 class MainContainer extends PureComponent {
@@ -26,6 +26,9 @@ class MainContainer extends PureComponent {
   // static propTypes = {
   //   currentPage: PropTypes.string.isRequired
   // }
+  componentWillMount() {
+    this.props.login('secondUser@humper.com', 'password')
+  }
 
   pageview = () => {
     if (!this.props.loginSuccess && this.props.userExists) {
@@ -100,4 +103,4 @@ const mapStateToProps = ({ loginSuccess, userExists }) => {
   return { loginSuccess, userExists }
 }
 
-export default connect(mapStateToProps, { noUser })(MainContainer)
+export default connect(mapStateToProps, { login, noUser })(MainContainer)
