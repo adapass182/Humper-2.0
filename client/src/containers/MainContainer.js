@@ -54,7 +54,7 @@ class MainContainer extends PureComponent {
     return (
       <div className="Hcontainer">
         <header className="App-header">
-          <h1 className="App-title">HUMPER</h1>
+          <h1 className="App-title">Humper</h1>
         </header>
 
         <div id="leftSpace" />

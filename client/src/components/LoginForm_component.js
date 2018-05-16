@@ -23,7 +23,7 @@ class LoginForm extends PureComponent {
     return (
       <form onSubmit={this.handleSubmit}>
         <div>
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email"><p>Email</p></label>
           <input
             type="email"
             name="email"
@@ -34,7 +34,7 @@ class LoginForm extends PureComponent {
         </div>
 
         <div>
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password"><p>Password</p></label>
           <input
             type="password"
             name="password"

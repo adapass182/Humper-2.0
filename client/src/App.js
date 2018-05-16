@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './App.css'
+// import './styling/App.css'
 import Viewer from './containers/Viewer'
 import MainContainer from './containers/MainContainer'
 class App extends Component {
