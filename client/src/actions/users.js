@@ -5,6 +5,9 @@ const baseURL = 'http://localhost:8080'
 
 export const USER_LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS'
 export const USER_LOGIN_FAILED = 'USER_LOGIN_FAILED'
+export const USER_REGISTER_SUCCESS = 'USER_REGISTER_SUCCESS'
+export const USER_REGISTER_FAILED = 'USER_REGISTER_FAILED'
+export const NO_USER = 'NO_USER'
 
 export const login = (email, password) => dispatch => {
   request
@@ -26,4 +29,39 @@ export const login = (email, password) => dispatch => {
         console.error(err)
       }
     })
+}
+
+export const register = (email, password, password_confirm) => dispatch => {
+  if (password === password_confirm) {
+    request
+      .post(`${baseURL}/users`)
+      .send({ email, password })
+      .then(result => {
+        dispatch({
+          type: USER_REGISTER_SUCCESS,
+          payload: result.body
+        })
+      })
+      .catch(err => {
+        if (err.status === 400) {
+          dispatch({
+            type: USER_REGISTER_FAILED,
+            payload: err.response.body.message || 'Unknown error'
+          })
+        } else {
+          console.error(err)
+        }
+      })
+  } else {
+    return {
+      type: USER_REGISTER_FAILED,
+      payload: "Passwords don't match"
+    }
+  }
+}
+
+export const noUser = () => {
+  return {
+    type: NO_USER
+  }
 }

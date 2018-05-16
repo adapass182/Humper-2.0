@@ -6,8 +6,10 @@ import { setCurrentPage } from '../actions/setCurrentPage'
 import { connect } from 'react-redux'
 import Viewer from './Viewer'
 import LoginForm_component from '../components/LoginForm_component'
+import RegisterForm_component from '../components/RegisterForm_component'
 import MatchesPage_component from '../components/MatchesPage_component'
 import ProfilePage_component from '../components/ProfilePage_component'
+import { noUser } from '../actions/users'
 // import { setCurrentPage } from '../actions/setCurrentPage'
 
 class MainContainer extends PureComponent {
@@ -26,12 +28,15 @@ class MainContainer extends PureComponent {
   // }
 
   pageview = () => {
-    if (!this.props.loginSuccess) {
+    if (!this.props.loginSuccess && this.props.userExists) {
       return <LoginForm_component />
     }
-    if (this.state.currentPage === 'login') {
-      return <LoginForm_component />
+    if (!this.props.loginSuccess && !this.props.userExists) {
+      return <RegisterForm_component />
     }
+    // if (this.state.currentPage === 'register') {
+    //   return <RegisterForm_component />
+    // }
     if (this.state.currentPage === 'main') {
       return <Viewer />
     }
@@ -48,6 +53,11 @@ class MainContainer extends PureComponent {
     this.setState({
       currentPage: name
     })
+  }
+
+  handleClickUser = () => {
+    console.log("I've been clicked!")
+    this.props.noUser()
   }
 
   render() {
@@ -76,8 +86,8 @@ class MainContainer extends PureComponent {
             </div>
           )}
           {!this.props.loginSuccess && (
-            <button name="login" onClick={this.handleClick}>
-              login
+            <button name="register" onClick={this.handleClickUser}>
+              register
             </button>
           )}
         </div>
@@ -86,8 +96,8 @@ class MainContainer extends PureComponent {
   }
 }
 
-const mapStateToProps = state => {
-  return { loginSuccess: state.loginSuccess }
+const mapStateToProps = ({ loginSuccess, userExists }) => {
+  return { loginSuccess, userExists }
 }
 
-export default connect(mapStateToProps)(MainContainer)
+export default connect(mapStateToProps, { noUser })(MainContainer)
