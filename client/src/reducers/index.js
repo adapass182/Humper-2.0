@@ -6,6 +6,7 @@ import registerSuccess from './userRegistration_reducer'
 import userExists from './userExists_reducer'
 import userDetails from './userDetails_reducer'
 import adminStats from './adminStats_reducer'
+import pullFirstDogState from './pullFirstDog_reducer'
 
 export default {
   likeDislike,
@@ -15,5 +16,6 @@ export default {
   registerSuccess,
   userExists,
   userDetails,
-  adminStats
+  adminStats,
+  pullFirstDogState
 }
