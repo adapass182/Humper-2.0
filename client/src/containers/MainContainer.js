@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { login, noUser } from '../actions/users'
 
-import Viewer from './Viewer'
 import LoginForm from '../components/LoginForm_component'
 import RegisterForm from '../components/RegisterForm_component'
 import MatchesPage from '../components/MatchesPage_component'
@@ -28,7 +27,7 @@ class MainContainer extends PureComponent {
       return <RegisterForm />
     }
     if (this.state.currentPage === 'main') {
-      return <RateADog_component />
+      return <RateADog />
     }
     if (this.state.currentPage === 'profile') {
       return <ProfilePage />
