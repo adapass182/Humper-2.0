@@ -40,13 +40,21 @@ router.get('/matches', requireUser, (req, res) => {
         
           const mapIdToMail = likesPerUser.map(user => {
             return mailPerId.find(elem => {
-              
-              return elem.id === user.userId ? {...elem, ...user} : null
-
-
+              return elem.id === user.userId 
             })
           })
           console.log(JSON.stringify(mapIdToMail))
+
+          // create a new object of arrays, combine likesPerUser and mapIdToMail
+          // this way we get the users and preferences table combined
+          let arr3 = []
+          likesPerUser.forEach((itm, i) => {
+            arr3.push(Object.assign({}, itm, mapIdToMail[i]))
+          })
+          console.log(arr3)
+
+          res.send(arr3)
+
 
         })
         .catch(err => {
@@ -56,7 +64,7 @@ router.get('/matches', requireUser, (req, res) => {
 
 
 
-      res.send(likesPerUser)
+      //res.send(likesPerUser)
     })
     .catch(err => {
       console.log(err)
