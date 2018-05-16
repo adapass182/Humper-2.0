@@ -82,9 +82,9 @@ class MainContainer extends PureComponent {
               </button>
             </div>
           )}
-          {!this.props.loginSuccess && (
+          {!this.props.loginSuccess && this.props.userExists && (
             <button name="register" onClick={this.handleClickUser}>
-              register
+              Create Account
             </button>
           )}
         </div>

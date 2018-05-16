@@ -48,9 +48,9 @@ class LoginForm extends PureComponent {
               onChange={this.handleChange}
             />
           </div>
-
           <button type="submit">Login</button>
         </form>
+        <p>Need to create an account? Use the button below!</p>
       </div>
     )
   }
