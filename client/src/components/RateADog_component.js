@@ -19,8 +19,11 @@ class RateADog extends PureComponent {
 
   render() {
     return (
+      <div className="dogPicContainer">
+    
+        <img className="dogPic"src={this.props.fetchedImage.img} alt="current dog" />
+
       <div>
-        <img src={this.props.fetchedImage.img} alt="current dog" />
         <div className="voteButtonContainer">
           <button
             className="voteButton"
@@ -36,6 +39,7 @@ class RateADog extends PureComponent {
           </button>
         </div>
       </div>
+    </div>
     )
   }
 }

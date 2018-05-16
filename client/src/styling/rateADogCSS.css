@@ -1,0 +1,55 @@
+/* .dogPicContainer {
+  border: 1px solid green; */
+  /* height: 100%; */
+  /* padding: 80px 0; */
+  /* display: flex;
+  align-content: center; */
+
+/* } */
+
+
+
+
+.dogPic {
+  align-self: center;
+  margin-top: 20px;
+  border: 0px solid red;
+  border-radius: 3%;
+  width:  70%;
+  /* eight: 400px; */
+  background-repeat:   no-repeat;
+  background-size:     cover;
+}
+
+
+.voteButtonContainer{
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.voteButton {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  border: none;
+  font-size: large;
+  margin-bottom: 60px;
+}
+
+#likeButton {
+  background-color: white;
+  border: 2px solid green;
+  color: green;
+  margin-right: 50px;
+  margin-left: auto;
+}
+
+#dislikeButton {
+  background-color: white;
+  border: 2px solid red;
+  color: red;
+  margin-left: 50px;
+
+}
