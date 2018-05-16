@@ -1,31 +1,24 @@
 import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { login, noUser } from '../actions/users'
+
 import Viewer from './Viewer'
 import LoginForm from '../components/LoginForm_component'
 import RegisterForm from '../components/RegisterForm_component'
 import MatchesPage from '../components/MatchesPage_component'
 import ProfilePage from '../components/ProfilePage_component'
-import { login, noUser } from '../actions/users'
-// import { setCurrentPage } from '../actions/setCurrentPage'
+import RateADog from '../components/RateADog_component'
 
 class MainContainer extends PureComponent {
   constructor(props) {
     super(props)
     this.state = { currentPage: 'main' }
   }
-  // state = {
-  //   currentPage: 'main'
-  // }
 
-  // PROP-TYPES are only related to props passed in from state, either Redux state or parent state.
+  componentWillMount() {
+    this.props.login('secondUser@humper.com', 'password')
+  }
 
-  // static propTypes = {
-  //   currentPage: PropTypes.string.isRequired
-  // }
-  // componentWillMount() {
-  //   this.props.login('secondUser@humper.com', 'password')
-  // }
 
   pageview = () => {
     if (!this.props.loginSuccess && this.props.userExists) {
@@ -35,7 +28,7 @@ class MainContainer extends PureComponent {
       return <RegisterForm />
     }
     if (this.state.currentPage === 'main') {
-      return <Viewer />
+      return <RateADog_component />
     }
     if (this.state.currentPage === 'profile') {
       return <ProfilePage />
@@ -61,7 +54,7 @@ class MainContainer extends PureComponent {
     return (
       <div className="Hcontainer">
         <header className="App-header">
-          <h1 className="App-title">HUMPER</h1>
+          <h1 className="App-title">Humper</h1>
         </header>
 
         <div id="leftSpace" />

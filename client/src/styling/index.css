@@ -1,0 +1,15 @@
+/*
+This is the first stylesheet being called. Its called from the index.js file.
+It does nothing exept for importing the other css files and saves importing statements
+on the javascript files.
+
+It imports:
+- recetCSS
+    resets the css sheet so we start with a clean stylesheet
+-  baseSty
+    the base css. styling only the base elements (<p>, <div> etc.)
+*/
+
+@import "./resetCSS.css";
+@import "./mainContainerCSS.css";
+@import "./baseStyling.css";

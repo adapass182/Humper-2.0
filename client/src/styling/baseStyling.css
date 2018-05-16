@@ -1,0 +1,15 @@
+/*
+styling of all the base elements, also fonts
+*/
+
+
+
+
+h1 {
+  font-size: 4em;
+  font-family: 'Lobster', cursive;
+}
+
+p, button {
+  font-family: 'Comfortaa', cursive;
+}
