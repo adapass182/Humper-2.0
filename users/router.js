@@ -17,27 +17,31 @@ router.get('/users', requireUser, (req, res) => {
   User.findAll()
     .then(result => res.send(result))
     .catch(err => {
-      res.status(500).send({ error: 'Something went wrong with Postgres' })
+      res.send(err)
     })
 })
 
 router.post('/users', (req, res) => {
   const user = {
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,
     email: req.body.email,
     password: bcrypt.hashSync(req.body.password, 10)
   }
 
   User.create(user)
     .then(entity => {
+      console.log('Server log: ', entity)
       res.send({
         id: entity.id,
+        name: entity.firstname + ' ' + entity.lastname,
         email: entity.email
       })
     })
     .catch(err => {
       console.error(err)
       res.status(500).send({
-        message: 'Something went wrong'
+        message: 'User already exists. Please log in.'
       })
     })
 })
@@ -59,14 +63,14 @@ router.post('/logins', (req, res) => {
         })
       } else {
         res.status(400).send({
-          message: 'Password was incorrect'
+          message: 'Password was incorrect. Please try again.'
         })
       }
     })
     .catch(err => {
       console.error(err)
       res.status(500).send({
-        message: 'Something went wrong'
+        message: 'No user found. Please try again.'
       })
     })
 })

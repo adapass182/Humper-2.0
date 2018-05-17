@@ -1,5 +1,5 @@
 /*
-styling of all the base elements, also fonts
+styling of all the base elements <p>, <h> etc
 */
 
 h1 {
@@ -8,12 +8,56 @@ h1 {
 }
 
 h2 {
-  font-size: 2em;
+  font-size: 1.8em;
   font-family: 'Lobster', cursive;
-  padding: 1.2em;
+  padding: 10px;
+  color: lightgrey;
+}
+
+h3 {
+  font-family: 'Comfortaa', cursive;
+  font-size: 1.2em;
 }
 
 p,
-button {
+button,
+li,
+label,
+table {
   font-family: 'Comfortaa', cursive;
+  font-size: 0.95em;
+}
+
+table {
+  margin: auto;
+  line-height: 1.9em;
+}
+
+p {
+  line-height: 1.2em
+}
+
+.error-message {
+  color: red;
+}
+
+p {
+  padding: 0.5em;
+}
+
+
+#button {
+  /*  styles all the buttons,except for navbuttons ande like buttons*/
+  height: 20px;
+  width: 100px;
+  background-color: white;
+  border: none;
+  border-top: 1px solid lightgrey;
+  border-bottom: 1px solid lightgrey;
+  color: red;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 0.9em;
+  margin-left: 10px;
 }

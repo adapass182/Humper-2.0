@@ -1,0 +1,20 @@
+/* styles the mathing page */
+
+.matchAmountContainer {
+  /* the div which contains the number which displays the amount of likes */
+  padding-bottom: 20px;
+  border-bottom: 1px solid lightgrey;
+}
+
+.matchedUserContainer {
+  /* the div in which the user card is shown */
+  margin-top: 20px;
+}
+
+#matchScore{
+  /* the numner of total liked dogs */
+  color: red;
+  font-size: 2em;
+  font-weight: bold;
+}
+ 

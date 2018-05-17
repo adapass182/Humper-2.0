@@ -7,16 +7,15 @@ class RegisterForm extends PureComponent {
 
   handleSubmit = e => {
     e.preventDefault()
-    console.log(
-      this.state.email,
-      this.state.password,
-      this.state.password_confirm
-    )
-    this.props.register(
-      this.state.email,
-      this.state.password,
-      this.state.password_confirm
-    )
+    if (this.state.email) {
+      this.props.register(
+        this.state.firstname,
+        this.state.lastname,
+        this.state.email,
+        this.state.password,
+        this.state.password_confirm
+      )
+    }
   }
 
   handleChange = event => {
@@ -29,44 +28,77 @@ class RegisterForm extends PureComponent {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <div>
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            value={this.state.email || ''}
-            onChange={this.handleChange}
-          />
-        </div>
+      <div>
+        <form onSubmit={this.handleSubmit}>
+          <div>
+            <p htmlFor="firstname">First Name:</p>
+            <input
+              type="text"
+              name="firstname"
+              id="firstname"
+              value={this.state.firstname || ''}
+              onChange={this.handleChange}
+            />
+          </div>
 
-        <div>
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            value={this.state.password || ''}
-            onChange={this.handleChange}
-          />
-        </div>
+          <div>
+            <p htmlFor="lastname">Last Name:</p>
+            <input
+              type="text"
+              name="lastname"
+              id="lastname"
+              value={this.state.lastname || ''}
+              onChange={this.handleChange}
+            />
+          </div>
 
-        <div>
-          <label htmlFor="password_confirm">Confirm Password</label>
-          <input
-            type="password"
-            name="password_confirm"
-            id="password_confirm"
-            value={this.state.password_confirm || ''}
-            onChange={this.handleChange}
-          />
-        </div>
+          <div>
+            <p htmlFor="email">Email</p>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              value={this.state.email || ''}
+              onChange={this.handleChange}
+            />
+          </div>
 
-        <button type="submit">Register</button>
-      </form>
+          <div>
+            <p htmlFor="password">Password</p>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              value={this.state.password || ''}
+              onChange={this.handleChange}
+            />
+          </div>
+
+          <div>
+            <p htmlFor="password_confirm">Confirm Password</p>
+            <input
+              type="password"
+              name="password_confirm"
+              id="password_confirm"
+              value={this.state.password_confirm || ''}
+              onChange={this.handleChange}
+            />
+          </div>
+
+          <button id="button" className="SubmitButton" type="submit">
+            Register
+          </button>
+        </form>
+        {this.props.registerFailed && (
+          <p className="error-message">{this.props.registerFailed.error}</p>
+        )}
+      </div>
     )
   }
 }
 
-export default connect(null, { register })(RegisterForm)
+const mapStateToProps = ({ registerFailed }) => {
+  return { registerFailed }
+}
+
+export default connect(mapStateToProps, { register })(RegisterForm)

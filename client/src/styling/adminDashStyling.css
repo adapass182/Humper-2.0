@@ -1,0 +1,22 @@
+/* admin dashboard page styling  */
+
+
+tr {
+  /* creates bottom border on table rows */
+  border-bottom: 1px solid lightgrey;
+}
+
+th {
+  /* makes table headers bold */
+  font-weight: bold;
+}
+
+
+#adminDropDown {
+  /* styles the dropdown box  */
+  font-family: 'Comfortaa', cursive;
+  border-radius: 12px;
+  border: 2px solid lightgrey;
+  background-color: white;
+
+}

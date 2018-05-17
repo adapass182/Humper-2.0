@@ -15,15 +15,12 @@ router.get('/preferences', requireUser, (req, res) => {
   const preference = req.body
   preference.userId = req.user.id
 
-  Preference.findAll({
-    attributes: ['breed', 'val', 'id'],
-    where: { userId: preference.userId }
-  })
+  Preference.findAll()
     .then(result => {
       res.send(result)
     })
     .catch(err => {
-      res.status(500).send({ error: 'Something went wrong with Postgres' })
+      res.send(err)
     })
 })
 

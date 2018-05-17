@@ -1,0 +1,15 @@
+/* styles the login page */
+
+
+.loginFormContainer{
+  margin-top: 20px;
+}
+
+.inputBoxContainer {
+  margin-top: 10px;
+}
+
+.SubmitButton {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

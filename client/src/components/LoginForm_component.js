@@ -10,7 +10,6 @@ class LoginForm extends PureComponent {
 
   handleSubmit = e => {
     e.preventDefault()
-    console.log(this.state.email, this.state.password)
     this.props.login(this.state.email, this.state.password)
   }
 
@@ -24,11 +23,12 @@ class LoginForm extends PureComponent {
 
   render() {
     return (
-      <div>
+      <div className="loginFormContainer">
         <FirstLogin />
+
         <form onSubmit={this.handleSubmit}>
-          <div>
-            <label htmlFor="email">Email</label>
+          <div className="inputBoxContainer">
+            <p htmlFor="email">Email</p>
             <input
               type="email"
               name="email"
@@ -38,8 +38,8 @@ class LoginForm extends PureComponent {
             />
           </div>
 
-          <div>
-            <label htmlFor="password">Password</label>
+          <div className="inputBoxContainer">
+            <p htmlFor="password">Password</p>
             <input
               type="password"
               name="password"
@@ -48,12 +48,24 @@ class LoginForm extends PureComponent {
               onChange={this.handleChange}
             />
           </div>
-          <button type="submit">Login</button>
+
+          <button id="button" className="SubmitButton" type="submit">
+            Login
+          </button>
         </form>
+
         <p>Need to create an account? Use the button below!</p>
+
+        {this.props.loginFailed && (
+          <p className="error-message">{this.props.loginFailed.error}</p>
+        )}
       </div>
     )
   }
 }
 
-export default connect(null, { login })(LoginForm)
+const mapStateToProps = ({ loginFailed }) => {
+  return { loginFailed }
+}
+
+export default connect(mapStateToProps, { login })(LoginForm)

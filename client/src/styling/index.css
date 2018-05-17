@@ -6,7 +6,7 @@ on the javascript files.
 It imports:
 - recetCSS
     resets the css sheet so we start with a clean stylesheet
--  baseSty
+-  baseStyles
     the base css. styling only the base elements (<p>, <div> etc.)
 */
 
@@ -14,3 +14,8 @@ It imports:
 @import './mainContainerCSS.css';
 @import './baseStyling.css';
 @import './rateADogCSS.css';
+@import './matchesPageStyling.css';
+@import './userCardStyling.css';
+@import './profilePageStyling.css';
+@import './loginFormStyling.css';
+@import './adminDashStyling.css';

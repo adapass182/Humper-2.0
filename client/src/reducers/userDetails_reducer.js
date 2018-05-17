@@ -1,4 +1,4 @@
-import { USER_LOGIN_SUCCESS } from '../actions/users'
+import { USER_LOGIN_SUCCESS, USER_LOGOUT_SUCCESS } from '../actions/users'
 import { FETCHED_PREFS } from '../actions/rateDog'
 
 export default function(state = null, action) {
@@ -17,6 +17,8 @@ export default function(state = null, action) {
         admin: state.admin,
         preferences: [...action.payload]
       }
+    case USER_LOGOUT_SUCCESS:
+      return state = null
     default:
       return state
   }

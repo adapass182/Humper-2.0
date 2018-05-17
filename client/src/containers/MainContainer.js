@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import AdminDashboard from '../components/AdminDashboard_component'
-import { login, noUser } from '../actions/users'
+import { login, noUser, logout, toLoginPage } from '../actions/users'
 // import humperIcon from "../images/humperIcon"
 
 import LoginForm from '../components/LoginForm_component'
@@ -16,9 +16,9 @@ class MainContainer extends PureComponent {
     this.state = { currentPage: 'rateADog' }
   }
 
-  componentWillMount() {
-    this.props.login('secondUser@humper.com', 'password')
-  }
+  // componentWillMount() {
+  //   this.props.login('secondUser@humper.com', 'password')
+  // }
 
   pageview = () => {
     if (!this.props.loginSuccess && this.props.userExists) {
@@ -31,7 +31,13 @@ class MainContainer extends PureComponent {
       return <RateADog className="content" id="dogPic" />
     }
     if (this.state.currentPage === 'profile') {
-      return <ProfilePage className="content" />
+      return (
+        <ProfilePage
+          className="content"
+          onClickLogout={this.handleLogoutClick}
+          onClickAdmin={this.handleClick}
+        />
+      )
     }
     if (this.state.currentPage === 'matches') {
       return <MatchesPage className="content" />
@@ -49,8 +55,18 @@ class MainContainer extends PureComponent {
   }
 
   handleClickUser = () => {
-    console.log("I've been clicked!")
     this.props.noUser()
+  }
+
+  handleClickToLogin = () => {
+    this.props.toLoginPage()
+  }
+
+  handleLogoutClick = () => {
+    this.props.logout()
+    this.setState({
+      currentPage: 'rateADog'
+    })
   }
 
   render() {
@@ -65,11 +81,10 @@ class MainContainer extends PureComponent {
           />
         </header>
 
-        <div id="leftSpace" />
+        {/* <div id="leftSpace" /> */}
+        <div className="main-content">{this.pageview()}</div>
 
-        {this.pageview()}
-
-        <div id="rightSpace" />
+        {/* <div id="rightSpace" /> */}
 
         <div className="footer">
           {this.props.loginSuccess && (
@@ -93,14 +108,6 @@ class MainContainer extends PureComponent {
                 onClick={this.handleClick}>
                 matches
               </button>
-              {this.props.userDetails.admin && (
-                <button
-                  name="admin"
-                  className="navButton"
-                  onClick={this.handleClick}>
-                  admin
-                </button>
-              )}
             </div>
           )}
           {!this.props.loginSuccess &&
@@ -112,14 +119,25 @@ class MainContainer extends PureComponent {
                 Create Account
               </button>
             )}
+          {!this.props.loginSuccess &&
+            !this.props.userExists && (
+              <button
+                name="login"
+                className="navButton"
+                onClick={this.handleClickToLogin}>
+                Login
+              </button>
+            )}
         </div>
       </div>
     )
   }
 }
 
-const mapStateToProps = ({ loginSuccess, userExists, userDetails }) => {
-  return { loginSuccess, userExists, userDetails }
+const mapStateToProps = ({ loginSuccess, userExists }) => {
+  return { loginSuccess, userExists }
 }
 
-export default connect(mapStateToProps, { login, noUser })(MainContainer)
+export default connect(mapStateToProps, { login, noUser, toLoginPage, logout })(
+  MainContainer
+)
