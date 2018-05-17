@@ -1,6 +1,5 @@
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
-import {Redirect} from 'react-router-dom'
 
 class UserCardComponent extends PureComponent {
 
@@ -10,6 +9,7 @@ class UserCardComponent extends PureComponent {
         <div className="userCardContainer" >
           <img
             src={require('../images/profileIcon.png')}
+            alt="User avatar"
             className="userAvatar"
           />
           <div className= "userInfo">
