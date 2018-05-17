@@ -25,13 +25,19 @@ class ProfilePage extends PureComponent {
             )
           })}
         </ul>
+        <button
+          className="logoutbutton"
+          name="logout"
+          onClick={this.props.onClick}>
+          Log Out
+        </button>
       </div>
     )
   }
 }
 
-const mapStateToProps = ({ loginSuccess, userDetails }) => {
-  return { loginSuccess, userDetails }
+const mapStateToProps = ({ userDetails }) => {
+  return { userDetails }
 }
 
 export default connect(mapStateToProps, { getPrefs })(ProfilePage)

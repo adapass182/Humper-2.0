@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import AdminDashboard from '../components/AdminDashboard_component'
-import { login, noUser } from '../actions/users'
+import { login, noUser, logout } from '../actions/users'
 // import humperIcon from "../images/humperIcon"
 
 import LoginForm from '../components/LoginForm_component'
@@ -31,7 +31,7 @@ class MainContainer extends PureComponent {
       return <RateADog className="content" id="dogPic" />
     }
     if (this.state.currentPage === 'profile') {
-      return <ProfilePage className="content" />
+      return <ProfilePage className="content" onClick={this.handleLogoutClick}/>
     }
     if (this.state.currentPage === 'matches') {
       return <MatchesPage className="content" />
@@ -49,8 +49,11 @@ class MainContainer extends PureComponent {
   }
 
   handleClickUser = () => {
-    console.log("I've been clicked!")
     this.props.noUser()
+  }
+
+  handleLogoutClick = () => {
+    this.props.logout()
   }
 
   render() {
@@ -122,4 +125,4 @@ const mapStateToProps = ({ loginSuccess, userExists, userDetails }) => {
   return { loginSuccess, userExists, userDetails }
 }
 
-export default connect(mapStateToProps, { login, noUser })(MainContainer)
+export default connect(mapStateToProps, { login, noUser, logout })(MainContainer)
