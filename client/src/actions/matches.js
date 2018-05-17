@@ -1,8 +1,8 @@
 import * as request from 'superagent'
 
 // change this on heroku-prod branch
-// const baseUrl = 'https://humper.herokuapp.com'
-const baseUrl = 'http://localhost:8080'
+ const baseUrl = 'https://humper.herokuapp.com'
+//const baseUrl = 'http://localhost:8080'
 
 export const MATCHES_FETCHED = 'MATCHES_FETCHED'
 
