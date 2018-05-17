@@ -1,9 +1,7 @@
 import * as request from 'superagent'
 
 //const baseUrl = ( process.env.BASEURL ? process.env.BASEURL : 'http://localhost:8080' )
-const baseUrl = process.env.API_URL
-  ? process.env.API_URL
-  : 'http://localhost:8080'
+const baseUrl = 'https://humper.herokuapp.com'
 
 export const USER_LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS'
 export const USER_LOGIN_FAILED = 'USER_LOGIN_FAILED'
