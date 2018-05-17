@@ -10,7 +10,6 @@ class LoginForm extends PureComponent {
 
   handleSubmit = e => {
     e.preventDefault()
-    console.log(this.state.email, this.state.password)
     this.props.login(this.state.email, this.state.password)
   }
 
