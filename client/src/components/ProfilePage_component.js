@@ -5,16 +5,18 @@ import { getPrefs } from '../actions/rateDog'
 class ProfilePage extends PureComponent {
   componentWillMount() {
     this.props.getPrefs()
-  }
+  }s
 
   render() {
     return (
-      <div>
-        <h2>Account info</h2>
-        <ul>
-          <li>Name: {this.props.userDetails.name}</li>
-          <li>Email: {this.props.userDetails.username}</li>
-        </ul>
+      <div className="profilePageContainer">
+        <div className="accountInfoContainer">
+          <h2>Account info</h2>
+          <ul>
+            <li>Name: {this.props.userDetails.name}</li>
+            <li>Email: {this.props.userDetails.username}</li>
+          </ul>
+        </div>
         <h2>Top dogs</h2>
         <ul>
           {this.props.userDetails.preferences.map(element => {
