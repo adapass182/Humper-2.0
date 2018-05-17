@@ -1,0 +1,21 @@
+/* .matchesPageContainer {
+  max-width: 75%;
+} */
+
+.matchAmountContainer {
+  padding-bottom: 20px;
+  border-bottom: 1px solid lightgrey;
+}
+
+.matchedUserContainer {
+  margin-top: 20px;
+}
+
+#matchScore{
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.test {
+  color: red;
+}

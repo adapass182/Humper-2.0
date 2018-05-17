@@ -24,11 +24,14 @@ class LoginForm extends PureComponent {
 
   render() {
     return (
-      <div>
+      <div className="loginFormContainer">
+
         <FirstLogin />
+
         <form onSubmit={this.handleSubmit}>
-          <div>
-            <label htmlFor="email">Email</label>
+
+          <div className="inputBoxContainer">
+            <p htmlFor="email">Email</p>
             <input
               type="email"
               name="email"
@@ -38,8 +41,8 @@ class LoginForm extends PureComponent {
             />
           </div>
 
-          <div>
-            <label htmlFor="password">Password</label>
+          <div className="inputBoxContainer">
+            <p htmlFor="password">Password</p>
             <input
               type="password"
               name="password"
@@ -48,12 +51,17 @@ class LoginForm extends PureComponent {
               onChange={this.handleChange}
             />
           </div>
-          <button type="submit">Login</button>
+
+          <button className="SubmitButton" type="submit">Login</button>
+
         </form>
+
         <p>Need to create an account? Use the button below!</p>
+      
         {this.props.loginFailed && (
           <p className="error-message">{this.props.loginFailed.error}</p>
         )}
+
       </div>
     )
   }
