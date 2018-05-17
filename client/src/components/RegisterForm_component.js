@@ -87,7 +87,6 @@ class RegisterForm extends PureComponent {
             Register
           </button>
         </form>
-        <p>Need to create an account? Use the button below!</p>
         {this.props.registerFailed && (
           <p className="error-message">{this.props.registerFailed.error}</p>
         )}
