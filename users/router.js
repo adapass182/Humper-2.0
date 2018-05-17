@@ -17,12 +17,14 @@ router.get('/users', requireUser, (req, res) => {
   User.findAll()
     .then(result => res.send(result))
     .catch(err => {
-      res.status(500).send({ error: 'Something went wrong with Postgres' })
+      res.send(err)
     })
 })
 
 router.post('/users', (req, res) => {
   const user = {
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,
     email: req.body.email,
     password: bcrypt.hashSync(req.body.password, 10)
   }
@@ -31,6 +33,7 @@ router.post('/users', (req, res) => {
     .then(entity => {
       res.send({
         id: entity.id,
+        name: entity.firstname + ' ' + entity.lastname,
         email: entity.email
       })
     })

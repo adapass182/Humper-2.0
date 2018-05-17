@@ -37,16 +37,23 @@ export const login = (email, password) => dispatch => {
 
 export const pullFirstDog = () => {
   return {
-    type: PULL_FIRST_DOG,
+    type: PULL_FIRST_DOG
   }
 }
 
-export const register = (email, password, password_confirm) => dispatch => {
+export const register = (
+  firstname,
+  lastname,
+  email,
+  password,
+  password_confirm
+) => dispatch => {
   if (password === password_confirm) {
     request
       .post(`${baseUrl}/users`)
-      .send({ email, password })
+      .send({ firstname, lastname, email, password })
       .then(result => {
+        console.log(result)
         dispatch({
           type: USER_REGISTER_SUCCESS,
           payload: result.body

@@ -7,12 +7,9 @@ class RegisterForm extends PureComponent {
 
   handleSubmit = e => {
     e.preventDefault()
-    console.log(
-      this.state.email,
-      this.state.password,
-      this.state.password_confirm
-    )
     this.props.register(
+      this.state.firstname,
+      this.state.lastname,
       this.state.email,
       this.state.password,
       this.state.password_confirm
@@ -30,6 +27,28 @@ class RegisterForm extends PureComponent {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
+        <div>
+          <label htmlFor="firstname">First Name:</label>
+          <input
+            type="text"
+            name="firstname"
+            id="firstname"
+            value={this.state.firstname || ''}
+            onChange={this.handleChange}
+          />
+        </div>
+
+        <div>
+          <label htmlFor="lastname">First Name:</label>
+          <input
+            type="text"
+            name="lastname"
+            id="lastname"
+            value={this.state.lastname || ''}
+            onChange={this.handleChange}
+          />
+        </div>
+
         <div>
           <label htmlFor="email">Email</label>
           <input
