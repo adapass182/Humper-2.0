@@ -1,36 +1,58 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
 import { getPrefs } from '../actions/rateDog'
-
-import TopDogs from './TopDogs_component'
 
 class ProfilePage extends PureComponent {
   componentWillMount() {
     this.props.getPrefs()
   }
+  s
 
   render() {
     return (
-      <div>
-        <h2>Account info</h2>
-        <ul>
-          <li>Name: {this.props.userDetails.name}</li>
-          <li>Email: {this.props.userDetails.username}</li>
-        </ul>
+      <div className="profilePageContainer">
+        <div className="accountInfoContainer">
+          <h2>Account info</h2>
+          <ul>
+            <li>Name: {this.props.userDetails.name}</li>
+            <li>Email: {this.props.userDetails.username}</li>
+          </ul>
+        </div>
         <h2>Top dogs</h2>
         <ul>
           {this.props.userDetails.preferences.map(element => {
-            return <li key={element.id}>{element.breed}</li>
+            return (
+              <li key={element.breed}>
+                <p>
+                  {' '}
+                  <a className="breed"> {element.breed}</a>, Likes:{' '}
+                  {element.count}
+                </p>
+              </li>
+            )
           })}
         </ul>
+        {this.props.userDetails.admin && (
+          <button
+            name="admin"
+            className="logoutbutton"
+            onClick={this.props.onClickAdmin}>
+            Admin
+          </button>
+        )}
+        <button
+          className="logoutbutton"
+          name="logout"
+          onClick={this.props.onClickLogout}>
+          Log Out
+        </button>
       </div>
     )
   }
 }
 
-const mapStateToProps = ({ loginSuccess, userDetails }) => {
-  return { loginSuccess, userDetails }
+const mapStateToProps = ({ userDetails }) => {
+  return { userDetails }
 }
 
 export default connect(mapStateToProps, { getPrefs })(ProfilePage)

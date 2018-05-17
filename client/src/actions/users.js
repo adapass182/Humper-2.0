@@ -7,6 +7,7 @@ const baseUrl = process.env.API_URL
 
 export const USER_LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS'
 export const USER_LOGIN_FAILED = 'USER_LOGIN_FAILED'
+export const USER_LOGOUT_SUCCESS = 'USER_LOGOUT_SUCCESS'
 export const USER_REGISTER_SUCCESS = 'USER_REGISTER_SUCCESS'
 export const USER_REGISTER_FAILED = 'USER_REGISTER_FAILED'
 export const NO_USER = 'NO_USER'
@@ -18,56 +19,68 @@ export const login = (email, password) => dispatch => {
     .post(`${baseUrl}/logins`)
     .send({ email, password })
     .then(result => {
-      console.log(result.body)
       dispatch({
         type: USER_LOGIN_SUCCESS,
         payload: result.body
       })
     })
     .catch(err => {
-      if (err.status === 400) {
-        dispatch({
-          type: USER_LOGIN_FAILED,
-          payload: err.response.body.message || 'Unknown error'
-        })
-      } else {
-        console.error(err)
-      }
+      console.log('Catch error: ', err)
+      dispatch({
+        type: USER_LOGIN_FAILED,
+        payload: err.response.body.message || 'Unknown error'
+      })
     })
+}
+
+export const logout = () => {
+  return {
+    type: USER_LOGOUT_SUCCESS,
+  }
 }
 
 export const pullFirstDog = () => {
   return {
-    type: PULL_FIRST_DOG,
+    type: PULL_FIRST_DOG
   }
 }
 
-export const register = (email, password, password_confirm) => dispatch => {
+export const register = (
+  firstname,
+  lastname,
+  email,
+  password,
+  password_confirm
+) => dispatch => {
   if (password === password_confirm) {
     request
       .post(`${baseUrl}/users`)
-      .send({ email, password })
+      .send({ firstname, lastname, email, password })
       .then(result => {
-        dispatch({
-          type: USER_REGISTER_SUCCESS,
-          payload: result.body
-        })
-      })
-      .catch(err => {
-        if (err.status === 400) {
+        if (result.accepted === false) {
           dispatch({
             type: USER_REGISTER_FAILED,
-            payload: err.response.body.message || 'Unknown error'
+            payload: result.body.errors[0].message || 'Unknown error'
           })
         } else {
-          console.error(err)
+          dispatch({
+            type: USER_REGISTER_SUCCESS,
+            payload: result.body
+          })
         }
       })
+      .catch(err => {
+        console.log('Catch error: ', err)
+        dispatch({
+          type: USER_REGISTER_FAILED,
+          payload: err.response.body.message || 'Unknown error'
+        })
+      })
   } else {
-    return {
+    dispatch({
       type: USER_REGISTER_FAILED,
-      payload: "Passwords don't match"
-    }
+      payload: "Passwords don't match. Please try again"
+    })
   }
 }
 
@@ -85,10 +98,9 @@ export const getUserStats = () => (dispatch, getState) => {
     .get(`${baseUrl}/users`)
     .set('Authorization', `Bearer ${jwt}`)
     .then(result => {
-      console.log(result)
       dispatch({
         type: FETCHED_USER_STATS,
-        payload: result.body
+        payload: result.body.length
       })
     })
 }

@@ -1,0 +1,33 @@
+.matchesPageContainer {
+  height:100%;
+  /* width: 50%; */
+}
+
+.matchesPage {
+  align-items: center;
+}
+
+.userCardContainer {
+  margin: auto;
+  border-radius: 10px;
+  border: 1px solid lightgrey;
+  display: flex;
+  margin-bottom: 2px;
+  text-align: left;
+}
+
+.userAvatar {
+  height: 40px;
+}
+
+.userInfo {
+  margin-top: 4px;
+  margin-left: 10px;
+}
+.userCardText {
+  font-size: 0.8em;
+}
+ #userName {
+   font-weight: bold;
+   border-bottom: 1px solid lightgrey;
+ }
