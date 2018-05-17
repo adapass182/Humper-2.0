@@ -17,3 +17,11 @@ p,
 button {
   font-family: 'Comfortaa', cursive;
 }
+
+.error-message {
+  color: red;
+}
+
+p {
+  padding: 0.5em;
+}

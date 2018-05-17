@@ -31,6 +31,7 @@ router.post('/users', (req, res) => {
 
   User.create(user)
     .then(entity => {
+      console.log('Server log: ', entity)
       res.send({
         id: entity.id,
         name: entity.firstname + ' ' + entity.lastname,
@@ -40,7 +41,7 @@ router.post('/users', (req, res) => {
     .catch(err => {
       console.error(err)
       res.status(500).send({
-        message: 'Something went wrong'
+        message: 'User already exists. Please log in.'
       })
     })
 })
@@ -62,14 +63,14 @@ router.post('/logins', (req, res) => {
         })
       } else {
         res.status(400).send({
-          message: 'Password was incorrect'
+          message: 'Password was incorrect. Please try again.'
         })
       }
     })
     .catch(err => {
       console.error(err)
       res.status(500).send({
-        message: 'Something went wrong'
+        message: 'No user found. Please try again.'
       })
     })
 })
