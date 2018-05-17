@@ -1,13 +1,13 @@
-.matchesPageContainer {
-  height: 100%;
-  /* width: 50%; */
-}
+/* styles the user card component (used on matches page) */
 
-.matchesPage {
-  align-items: center;
+
+.matchesPageContainer {
+  /* container of the page */
+  height: 100%;
 }
 
 .userCardContainer {
+  /* container of the user card */
   margin: auto;
   border-radius: 10px;
   border: 1px solid lightgrey;
@@ -19,17 +19,24 @@
 }
 
 .userAvatar {
+  /* picture of user in card */
+  border-right: 1px solid lightgrey;
+  margin-top: 10px;
   height: 40px;
 }
 
 .userInfo {
+  /* information of the user in the card */
   margin-top: 4px;
   margin-left: 10px;
 }
+
 .userCardText {
+  /* text on the card */
   font-size: 0.8em;
 }
 #userName {
+  /* only username on card */
   font-weight: bold;
   border-bottom: 1px solid lightgrey;
 }

@@ -34,13 +34,13 @@ class RateADog extends PureComponent {
             className="voteButton"
             id="dislikeButton"
             onClick={this.handleDislike.bind(this)}>
-            No Good Boy!
+            <p>Bad Boy</p>
           </button>
           <button
             className="voteButton"
             id="likeButton"
             onClick={this.handleLike.bind(this)}>
-            Good Boy!
+            Good Boy
           </button>
         </div>
       </div>
