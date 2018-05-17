@@ -6,7 +6,7 @@ on the javascript files.
 It imports:
 - recetCSS
     resets the css sheet so we start with a clean stylesheet
--  baseSty
+-  baseStyles
     the base css. styling only the base elements (<p>, <div> etc.)
 */
 

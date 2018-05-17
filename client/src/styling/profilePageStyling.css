@@ -1,8 +1,12 @@
+/* styling of the profile page */
+
 .accountInfoContainer {
+  /* contains the name and email of the current user */
   border-bottom: 1px solid lightgrey;
   padding-bottom: 20px;
 }
 
 .breed {
+  /* styles the name of the dog breed in the list */
   font-weight: bold;
 }

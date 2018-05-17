@@ -57,6 +57,9 @@ Main container contains:
   bottom: 0;
 }
 
+
+/*button styling----------------------------------- */
+
 .navButton {
   /* general styling for the button nav buttons */
   height: 50px;
