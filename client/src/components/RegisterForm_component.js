@@ -29,7 +29,7 @@ class RegisterForm extends PureComponent {
       <div>
         <form onSubmit={this.handleSubmit}>
           <div>
-            <label htmlFor="firstname">First Name:</label>
+            <p htmlFor="firstname">First Name:</p>
             <input
               type="text"
               name="firstname"
@@ -40,7 +40,7 @@ class RegisterForm extends PureComponent {
           </div>
 
           <div>
-            <label htmlFor="lastname">Last Name:</label>
+            <p htmlFor="lastname">Last Name:</p>
             <input
               type="text"
               name="lastname"
@@ -51,7 +51,7 @@ class RegisterForm extends PureComponent {
           </div>
 
           <div>
-            <label htmlFor="email">Email</label>
+            <p htmlFor="email">Email</p>
             <input
               type="email"
               name="email"
@@ -62,7 +62,7 @@ class RegisterForm extends PureComponent {
           </div>
 
           <div>
-            <label htmlFor="password">Password</label>
+            <p htmlFor="password">Password</p>
             <input
               type="password"
               name="password"
@@ -73,7 +73,7 @@ class RegisterForm extends PureComponent {
           </div>
 
           <div>
-            <label htmlFor="password_confirm">Confirm Password</label>
+            <p htmlFor="password_confirm">Confirm Password</p>
             <input
               type="password"
               name="password_confirm"
@@ -83,7 +83,7 @@ class RegisterForm extends PureComponent {
             />
           </div>
 
-          <button className="SubmitButton" type="submit">
+          <button id="button" className="SubmitButton" type="submit">
             Register
           </button>
         </form>
