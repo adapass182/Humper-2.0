@@ -34,6 +34,9 @@ class AdminDashboard extends PureComponent {
     this.props.getDogStats()
     this.props.getTopTenLiked()
   }
+  componentDidMount() {
+    this.props.getTopTenLiked()
+  }
   
   render() {
     const admin = this.props.adminStats
