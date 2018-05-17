@@ -54,6 +54,13 @@ class MainContainer extends PureComponent {
     this.props.noUser()
   }
 
+  handleLogoutClick = () => {
+    this.props.logout()
+    this.setState({
+      currentPage: 'rateADog'
+    })
+  }
+
   render() {
     return (
       <div className="MainContainer">
