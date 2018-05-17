@@ -13,7 +13,7 @@ Main container contains:
   text-align: center;
   width: 360px;
   height: 640px;
-}
+
 
 /*header styling----------------------------------- */
 
@@ -48,7 +48,7 @@ Main container contains:
 .footer {
   /* container for navButtons, always displays on bottom of page */
   height: 50px;
-  width: 100%;
+  width: 360px;
   background-color: white;
   position: absolute;
   bottom: 0;

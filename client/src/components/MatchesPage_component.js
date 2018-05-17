@@ -1,8 +1,6 @@
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
-import {Redirect} from 'react-router-dom'
 import {getMatch} from '../actions/matches'
-import MatchesList from './MatchesList_component'
 import UserCardComponent from './UserCardComponent'
 
 class MatchesPage extends PureComponent {

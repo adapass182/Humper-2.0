@@ -11,6 +11,7 @@ export const USER_LOGOUT_SUCCESS = 'USER_LOGOUT_SUCCESS'
 export const USER_REGISTER_SUCCESS = 'USER_REGISTER_SUCCESS'
 export const USER_REGISTER_FAILED = 'USER_REGISTER_FAILED'
 export const NO_USER = 'NO_USER'
+export const TO_LOGIN = 'TO_LOGIN'
 export const FETCHED_USER_STATS = 'FETCHED_USER_STATS'
 export const PULL_FIRST_DOG = 'PULL_FIRST_DOG'
 
@@ -87,6 +88,12 @@ export const register = (
 export const noUser = () => {
   return {
     type: NO_USER
+  }
+}
+
+export const toLoginPage = () => {
+  return {
+    type: TO_LOGIN
   }
 }
 
