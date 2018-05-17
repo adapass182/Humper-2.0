@@ -1,31 +1,37 @@
-import React, {PureComponent} from 'react'
-import {connect} from 'react-redux'
-import {Redirect} from 'react-router-dom'
-
-import TopDogs from './TopDogs_component'
+import React, { PureComponent } from 'react'
+import { connect } from 'react-redux'
+import { getPrefs } from '../actions/rateDog'
 
 class ProfilePage extends PureComponent {
+  componentWillMount() {
+    this.props.getPrefs()
+  }
 
-	render() {
-		return (
-			<div>
-				<h1>UserName</h1>
+  render() {
+    return (
+      <div>
         <h2>Account info</h2>
         <ul>
-          <li>Name</li>
-          <li>Email</li>
-          <li>Some other user info</li>
+          <li>Name: {this.props.userDetails.name}</li>
+          <li>Email: {this.props.userDetails.username}</li>
         </ul>
         <h2>Top dogs</h2>
-			</div>
-		)
-	}
+        <ul>
+          {this.props.userDetails.preferences.map(element => {
+            return (
+              <li key={element.breed}>
+                Breed: {element.breed}, Score: {element.count}
+              </li>
+            )
+          })}
+        </ul>
+      </div>
+    )
+  }
 }
 
-const mapStateToProps = function (state) {
-	return {
-
-	}
+const mapStateToProps = ({ loginSuccess, userDetails }) => {
+  return { loginSuccess, userDetails }
 }
 
-export default connect(mapStateToProps, {})(ProfilePage)
+export default connect(mapStateToProps, { getPrefs })(ProfilePage)

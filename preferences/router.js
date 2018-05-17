@@ -1,7 +1,7 @@
 const Router = require('express').Router
 const Preference = require('./model')
-
 const router = new Router()
+const sequelize = require('../db')
 
 const requireUser = (req, res, next) => {
   if (req.user) next()
@@ -16,13 +16,11 @@ router.get('/preferences', requireUser, (req, res) => {
   preference.userId = req.user.id
 
   Preference.findAll({
-    attributes: ['breed', 'val'],
+    attributes: ['breed', 'val', 'id'],
     where: { userId: preference.userId }
   })
     .then(result => {
-      res.send({
-        preferences: result
-      })
+      res.send(result)
     })
     .catch(err => {
       res.status(500).send({ error: 'Something went wrong with Postgres' })
@@ -36,6 +34,25 @@ router.post('/preferences', requireUser, (req, res) => {
   Preference.create(preference).then(entity => {
     res.status(201).send(entity)
   })
+})
+
+router.get('/preferences/top10', requireUser, (req, res) => {
+  const preference = req.body
+  preference.userId = req.user.id
+
+  sequelize
+    .query(
+      `select "userId", breed, count(*) as count from preferences where "userId" = ${
+        preference.userId
+      } AND val = 1 group by "userId", breed order by count desc limit 10`,
+      { type: sequelize.QueryTypes.SELECT }
+    )
+    .then(result => {
+      res.send(result)
+    })
+    .catch(err => {
+      res.status(500).send({ error: 'Something went wrong with Postgres' })
+    })
 })
 
 // NOT IMPLEMENTING AN UPDATE SINCE WE CAN REDUCE THE VALS FOR DUPLICATE RECORDS ON THE GET

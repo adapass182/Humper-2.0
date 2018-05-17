@@ -7,26 +7,44 @@ export const FETCHED_IMAGE = 'FETCHED_IMAGE'
 export const LIKE_DOG = 'LIKE_DOG'
 export const DISLIKE_DOG = 'DISLIKE_DOG'
 export const POSTED_BREED = 'POSTED_BREED'
+export const FETCHED_PREFS = 'FETCHED_PREFS'
+export const FETCHED_DOG_STATS = 'FETCHED_DOG_STATS'
 
 export const getDog = () => dispatch => {
   request
     .get(`${dogApiUrl}`)
     .then(response =>
       dispatch({
-        type: 'FETCHED_IMAGE',
+        type: FETCHED_IMAGE,
         payload: {
           img: response.body.message,
-          breed: response.body.message.split('/')[4]
+          breed: response.body.message.split('/')[4].split('-')[0]
         }
       })
     )
     .catch(err => alert(err))
 }
 
+export const getPrefs = () => (dispatch, getState) => {
+  const state = getState()
+  const jwt = state.loginSuccess.jwt
+
+  request
+    .get(`${baseUrl}/preferences/top10`)
+    .set('Authorization', `Bearer ${jwt}`)
+    .then(response => {
+      dispatch({
+        type: FETCHED_PREFS,
+        payload: response.body
+      })
+    })
+    .catch(err => alert(err))
+}
+
 export const rateDog = (breed, opinion) => (dispatch, getState) => {
   const state = getState()
   const jwt = state.loginSuccess.jwt
-  const likeOrDislike = opinion === 'Like' ? LIKE_DOG : DISLIKE_DOG
+  // const likeOrDislike = opinion === 'Like' ? LIKE_DOG : DISLIKE_DOG
   const val = opinion === 'Like' ? 1 : -1
 
   request
@@ -34,4 +52,19 @@ export const rateDog = (breed, opinion) => (dispatch, getState) => {
     .set('Authorization', `Bearer ${jwt}`)
     .send({ breed, val })
     .then(response => console.log(response))
+}
+
+export const getDogStats = () => (dispatch, getState) => {
+  const state = getState()
+  const jwt = state.loginSuccess.jwt
+
+  request
+    .get(`${baseUrl}/preferences`)
+    .set('Authorization', `Bearer ${jwt}`)
+    .then(result => {
+      dispatch({
+        type: FETCHED_DOG_STATS,
+        payload: result.body.length
+      })
+    })
 }

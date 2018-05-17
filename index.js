@@ -2,6 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const preferenceRouter = require('./preferences/router')
 const usersRouter = require('./users/router')
+const matchesRouter = require('./matches/router')
 const verify = require('./jwt').verify
 const User = require('./users/model')
 
@@ -57,3 +58,4 @@ app.use(function(req, res, next) {
 
 app.use(preferenceRouter)
 app.use(usersRouter)
+app.use(matchesRouter)
