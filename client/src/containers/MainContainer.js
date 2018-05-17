@@ -16,9 +16,9 @@ class MainContainer extends PureComponent {
     this.state = { currentPage: 'rateADog' }
   }
 
-  componentWillMount() {
-    this.props.login('secondUser@humper.com', 'password')
-  }
+  // componentWillMount() {
+  //   this.props.login('secondUser@humper.com', 'password')
+  // }
 
   pageview = () => {
     if (!this.props.loginSuccess && this.props.userExists) {
@@ -119,15 +119,15 @@ class MainContainer extends PureComponent {
                 Create Account
               </button>
             )}
-            {!this.props.loginSuccess &&
-              !this.props.userExists && (
-                <button
-                  name="login"
-                  className="navButton"
-                  onClick={this.handleClickToLogin}>
-                  Login
-                </button>
-              )}
+          {!this.props.loginSuccess &&
+            !this.props.userExists && (
+              <button
+                name="login"
+                className="navButton"
+                onClick={this.handleClickToLogin}>
+                Login
+              </button>
+            )}
         </div>
       </div>
     )
