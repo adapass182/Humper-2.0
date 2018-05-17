@@ -1,4 +1,8 @@
 .accountInfoContainer {
   border-bottom: 1px solid lightgrey;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
+}
+
+.breed {
+  font-weight: bold;
 }
