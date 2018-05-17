@@ -9,10 +9,13 @@ Main container contains:
 
 .MainContainer {
   /*entire main container, contains all other elements */
+  position: relative;
   text-align: center;
-  max-width: 360px;
-  max-height: 640px;
+  width: 360px;
+  height: 640px;
+
   margin: auto;
+
 }
 
 /*header styling----------------------------------- */
@@ -32,7 +35,7 @@ Main container contains:
 
 .App-title {
   /* text inside header */
-  padding: auto auto;
+  padding: auto;
   margin-left: 10px;
 }
 
@@ -55,6 +58,7 @@ Main container contains:
 }
 
 .navButton {
+  /* general styling for the button nav buttons */
   height: 50px;
   width: 33.3%;
   background-color: white;
@@ -68,6 +72,7 @@ Main container contains:
 }
 
 #rateADogButton {
+  /* create the grey dividers between the buttons () */
   border-right: 1px solid lightgrey;
   border-left: 1px solid lightgrey;
 }

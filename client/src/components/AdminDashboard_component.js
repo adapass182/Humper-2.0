@@ -37,19 +37,18 @@ class AdminDashboard extends PureComponent {
   componentDidMount() {
     this.props.getTopTenLiked()
   }
-  
+
   render() {
     const admin = this.props.adminStats
     return (
-      <div>
+      <div className="dashboardContainer">
         <h2>Admin Dashboard</h2>
-        <ul>
-          <li>Total Users: {this.props.adminStats.totalUsers}</li>
-          <li>Total Dogs Liked: {this.props.adminStats.totalDogs}</li>
-        </ul>
+          <p>Total Users: {this.props.adminStats.totalUsers}</p>
+          <p>Total Dogs Liked: {this.props.adminStats.totalDogs}</p>
+
 
         <form onSubmit={this.handleSubmit}>
-          <select name="stats" onChange={this.handleSubmit}>
+          <select id="adminDropDown"  name="stats" onChange={this.handleSubmit}>
             <option value="liked">Top ten liked breeds</option>
             <option value="disliked">Top ten disliked breeds</option>
             <option value="mostactive">Most active users</option>
@@ -57,26 +56,25 @@ class AdminDashboard extends PureComponent {
         </form>
 
 
-
-        { this.state.stats === "liked" && 
-            <div>
-            <p>Top ten liked breeds: </p>
-            <table>
-              <tbody>
-              <tr>
-                <th>Breed</th>
-                <th>Likes</th>
-              </tr>
-              { admin.topTenLike && 
-                  admin.topTenLike.map((e,i) => (
-                    <tr key={i}>
-                      <td>{e.breed}</td>
-                      <td>{e.count}</td>
-                    </tr>
-                  )) 
-              }
-              </tbody>
-            </table>
+          { this.state.stats === "liked" &&
+              <div>
+              <p>Top ten liked breeds: </p>
+              <table>
+                <tbody>
+                <tr>
+                  <th>Breed</th>
+                  <th>Likes</th>
+                </tr>
+                { admin.topTenLike &&
+                    admin.topTenLike.map((e,i) => (
+                      <tr key={i}>
+                        <td>{e.breed}</td>
+                        <td>{e.count}</td>
+                      </tr>
+                    ))
+                }
+                </tbody>
+              </table>
           </div>
         }
 
@@ -89,13 +87,13 @@ class AdminDashboard extends PureComponent {
                 <th>Breed</th>
                 <th>Dislikes</th>
               </tr>
-              { admin.topTenDislike && 
+              { admin.topTenDislike &&
                   admin.topTenDislike.map((e,i) => (
                     <tr key={i}>
                       <td>{e.breed}</td>
                       <td>{e.count}</td>
                     </tr>
-                  )) 
+                  ))
               }
             </tbody>
           </table>
@@ -110,7 +108,7 @@ class AdminDashboard extends PureComponent {
               <tr>
                 <th>Name</th>
                 <th>e-mail</th>
-                <th># of likes</th>
+                <th>likes</th>
               </tr>
               { admin.mostActive &&
                   admin.mostActive.map((e,i) => (
