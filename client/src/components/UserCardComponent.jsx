@@ -14,7 +14,7 @@ class UserCardComponent extends PureComponent {
           />
           <div className= "userInfo">
             <p className="userCardText" id="userName">{this.props.name}</p>
-            <p className="userCardText">dogs liked: {this.props.dogLikes}</p>
+            <p className="userCardText">Good boys: {this.props.dogLikes}</p>
           </div>
 
 

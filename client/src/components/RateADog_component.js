@@ -31,22 +31,23 @@ class RateADog extends PureComponent {
           src={this.props.fetchedImage.img}
           alt="current dog"
         />
+      
+        <img className="dogPic"src={this.props.fetchedImage.img} alt="current dog" />
 
-        <div>
-          <div className="voteButtonContainer">
-            <button
-              className="voteButton"
-              id="dislikeButton"
-              onClick={this.handleDislike.bind(this)}>
-              No Good Boy!
-            </button>
-            <button
-              className="voteButton"
-              id="likeButton"
-              onClick={this.handleLike.bind(this)}>
-              Good Boy!
-            </button>
-          </div>
+      <div>
+        <div className="voteButtonContainer">
+          <button
+            className="voteButton"
+            id="dislikeButton"
+            onClick={this.handleDislike.bind(this)}>
+            <p>Bad Boy</p>
+          </button>
+          <button
+            className="voteButton"
+            id="likeButton"
+            onClick={this.handleLike.bind(this)}>
+            Good Boy
+          </button>
         </div>
       </div>
     )
