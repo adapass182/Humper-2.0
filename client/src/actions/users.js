@@ -36,7 +36,7 @@ export const login = (email, password) => dispatch => {
 
 export const logout = () => {
   return {
-    type: USER_LOGOUT_SUCCESS,
+    type: USER_LOGOUT_SUCCESS
   }
 }
 
@@ -58,17 +58,10 @@ export const register = (
       .post(`${baseUrl}/users`)
       .send({ firstname, lastname, email, password })
       .then(result => {
-        if (result.accepted === false) {
-          dispatch({
-            type: USER_REGISTER_FAILED,
-            payload: result.body.errors[0].message || 'Unknown error'
-          })
-        } else {
-          dispatch({
-            type: USER_REGISTER_SUCCESS,
-            payload: result.body
-          })
-        }
+        dispatch({
+          type: USER_REGISTER_SUCCESS,
+          payload: result.body
+        })
       })
       .catch(err => {
         console.log('Catch error: ', err)
