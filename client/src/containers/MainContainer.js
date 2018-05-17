@@ -31,7 +31,13 @@ class MainContainer extends PureComponent {
       return <RateADog className="content" id="dogPic" />
     }
     if (this.state.currentPage === 'profile') {
-      return <ProfilePage className="content" onClick={this.handleLogoutClick}/>
+      return (
+        <ProfilePage
+          className="content"
+          onClickLogout={this.handleLogoutClick}
+          onClickAdmin={this.handleClick}
+        />
+      )
     }
     if (this.state.currentPage === 'matches') {
       return <MatchesPage className="content" />
@@ -96,14 +102,6 @@ class MainContainer extends PureComponent {
                 onClick={this.handleClick}>
                 matches
               </button>
-              {this.props.userDetails.admin && (
-                <button
-                  name="admin"
-                  className="navButton"
-                  onClick={this.handleClick}>
-                  admin
-                </button>
-              )}
             </div>
           )}
           {!this.props.loginSuccess &&
@@ -121,8 +119,10 @@ class MainContainer extends PureComponent {
   }
 }
 
-const mapStateToProps = ({ loginSuccess, userExists, userDetails }) => {
-  return { loginSuccess, userExists, userDetails }
+const mapStateToProps = ({ loginSuccess, userExists }) => {
+  return { loginSuccess, userExists }
 }
 
-export default connect(mapStateToProps, { login, noUser, logout })(MainContainer)
+export default connect(mapStateToProps, { login, noUser, logout })(
+  MainContainer
+)
