@@ -1,9 +1,7 @@
 import * as request from 'superagent'
 
 const dogApiUrl = 'https://dog.ceo/api/breeds/image/random'
-const baseUrl = process.env.API_URL
-  ? process.env.API_URL
-  : 'http://localhost:8080'
+const baseUrl = 'https://humper.herokuapp.com'
 
 export const FETCHED_IMAGE = 'FETCHED_IMAGE'
 export const LIKE_DOG = 'LIKE_DOG'
