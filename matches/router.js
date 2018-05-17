@@ -14,6 +14,67 @@ const requireUser = (req, res, next) => {
     })
 }
 
+router.get('/adminstats/toptenliked', requireUser, (req,res) => {
+  // get top 10 liked breeds
+  sequelize.query(
+    `SELECT breed, COUNT(breed)
+    FROM preferences
+    WHERE val = 1
+    GROUP BY breed
+    ORDER BY count DESC
+    LIMIT 10`,
+    { type: sequelize.QueryTypes.SELECT }
+  )
+    .then(topTenLiked => {
+      console.log(topTenLiked)
+      res.send({
+        topTenLiked
+      })
+    })
+    .catch(err => console.log(err))
+})
+
+router.get('/adminstats/toptendisliked', requireUser, (req,res) => {
+  // get top 10 disliked breeds
+  sequelize.query(
+    `SELECT breed, COUNT(breed)
+    FROM preferences
+    WHERE val = -1
+    GROUP BY breed
+    ORDER BY count DESC
+    LIMIT 10`,
+    { type: sequelize.QueryTypes.SELECT }
+  )
+    .then(topTenDisliked => {
+      res.send({
+        topTenDisliked
+      })
+    })
+    .catch(err => console.log(err))
+})
+
+router.get('/adminstats/mostactiveusers', requireUser, (req,res) => {
+  // get most active users
+  sequelize.query(
+    `SELECT a."userId", a.val, b.email, b.firstname, b.lastname, COUNT(*) AS ct
+    FROM preferences a
+    JOIN users b 
+    ON a."userId" = b.id
+    WHERE val = 1
+    GROUP BY a."userId", a.val, b.email, b.firstname, b.lastname
+    ORDER BY ct DESC
+    LIMIT 10`,
+    { type: sequelize.QueryTypes.SELECT }
+  )
+    .then(mostActiveUsers => {
+      console.log(mostActiveUsers)
+      res.send({
+        mostActiveUsers
+      })
+    })
+    .catch(err => console.log(err))
+})
+
 router.get('/matches', requireUser, (req, res) => {
   
   // MVP version user story:
