@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import AdminDashboard from '../components/AdminDashboard_component'
-import { login, noUser, logout } from '../actions/users'
+import { login, noUser, logout, toLoginPage } from '../actions/users'
 // import humperIcon from "../images/humperIcon"
 
 import LoginForm from '../components/LoginForm_component'
@@ -16,9 +16,9 @@ class MainContainer extends PureComponent {
     this.state = { currentPage: 'rateADog' }
   }
 
-  componentWillMount() {
-    this.props.login('secondUser@humper.com', 'password')
-  }
+  // componentWillMount() {
+  //   this.props.login('secondUser@humper.com', 'password')
+  // }
 
   pageview = () => {
     if (!this.props.loginSuccess && this.props.userExists) {
@@ -56,6 +56,10 @@ class MainContainer extends PureComponent {
 
   handleClickUser = () => {
     this.props.noUser()
+  }
+
+  handleClickToLogin = () => {
+    this.props.toLoginPage()
   }
 
   handleLogoutClick = () => {
@@ -115,6 +119,15 @@ class MainContainer extends PureComponent {
                 Create Account
               </button>
             )}
+            {!this.props.loginSuccess &&
+              !this.props.userExists && (
+                <button
+                  name="login"
+                  className="navButton"
+                  onClick={this.handleClickToLogin}>
+                  Login
+                </button>
+              )}
         </div>
       </div>
     )
@@ -125,6 +138,6 @@ const mapStateToProps = ({ loginSuccess, userExists }) => {
   return { loginSuccess, userExists }
 }
 
-export default connect(mapStateToProps, { login, noUser, logout })(
+export default connect(mapStateToProps, { login, noUser, toLoginPage, logout })(
   MainContainer
 )
