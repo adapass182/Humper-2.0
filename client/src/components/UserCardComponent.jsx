@@ -4,6 +4,7 @@ import {Redirect} from 'react-router-dom'
 
 class UserCardComponent extends PureComponent {
 
+
   	render() {
   		return (
         <div className="userCardContainer" >
@@ -12,8 +13,8 @@ class UserCardComponent extends PureComponent {
             className="userAvatar"
           />
           <div className= "userInfo">
-            <p>name:</p>
-            <p>dogs liked: </p>
+            <p className="userCardText" id="userName">{this.props.name}</p>
+            <p className="userCardText">dogs liked: {this.props.dogLikes}</p>
           </div>
 
 

@@ -1,11 +1,9 @@
 .matchesPageContainer {
-  /* border: 1px solid red; */
-  /* max-width: 75%; */
   height:100%;
+  /* width: 50%; */
 }
 
 .matchesPage {
-
   align-items: center;
 }
 
@@ -15,8 +13,21 @@
   border: 1px solid lightgrey;
   display: flex;
   margin-bottom: 2px;
+  text-align: left;
 }
 
 .userAvatar {
   height: 40px;
 }
+
+.userInfo {
+  margin-top: 4px;
+  margin-left: 10px;
+}
+.userCardText {
+  font-size: 0.8em;
+}
+ #userName {
+   font-weight: bold;
+   border-bottom: 1px solid lightgrey;
+ }

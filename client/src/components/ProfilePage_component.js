@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+  import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { getPrefs } from '../actions/rateDog'
 
@@ -22,7 +22,7 @@ class ProfilePage extends PureComponent {
           {this.props.userDetails.preferences.map(element => {
             return (
               <li key={element.breed}>
-                Breed: {element.breed}, Score: {element.count}
+                <p> <a className="breed"> {element.breed}</a>, Likes: {element.count}</p>
               </li>
             )
           })}
