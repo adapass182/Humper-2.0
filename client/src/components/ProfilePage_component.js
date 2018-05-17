@@ -1,11 +1,12 @@
-  import React, { PureComponent } from 'react'
+import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { getPrefs } from '../actions/rateDog'
 
 class ProfilePage extends PureComponent {
   componentWillMount() {
     this.props.getPrefs()
-  }s
+  }
+  s
 
   render() {
     return (
@@ -22,15 +23,27 @@ class ProfilePage extends PureComponent {
           {this.props.userDetails.preferences.map(element => {
             return (
               <li key={element.breed}>
-                <p> <a className="breed"> {element.breed}</a>, Likes: {element.count}</p>
+                <p>
+                  {' '}
+                  <a className="breed"> {element.breed}</a>, Likes:{' '}
+                  {element.count}
+                </p>
               </li>
             )
           })}
         </ul>
+        {this.props.userDetails.admin && (
+          <button
+            name="admin"
+            className="logoutbutton"
+            onClick={this.props.onClickAdmin}>
+            Admin
+          </button>
+        )}
         <button
           className="logoutbutton"
           name="logout"
-          onClick={this.props.onClick}>
+          onClick={this.props.onClickLogout}>
           Log Out
         </button>
       </div>

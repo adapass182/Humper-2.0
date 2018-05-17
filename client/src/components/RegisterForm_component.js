@@ -40,7 +40,7 @@ class RegisterForm extends PureComponent {
           </div>
 
           <div>
-            <label htmlFor="lastname">First Name:</label>
+            <label htmlFor="lastname">Last Name:</label>
             <input
               type="text"
               name="lastname"
@@ -83,7 +83,9 @@ class RegisterForm extends PureComponent {
             />
           </div>
 
-          <button type="submit">Register</button>
+          <button className="SubmitButton" type="submit">
+            Register
+          </button>
         </form>
         <p>Need to create an account? Use the button below!</p>
         {this.props.registerFailed && (
