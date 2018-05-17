@@ -13,6 +13,7 @@ export const USER_REGISTER_FAILED = 'USER_REGISTER_FAILED'
 export const NO_USER = 'NO_USER'
 export const TO_LOGIN = 'TO_LOGIN'
 export const FETCHED_USER_STATS = 'FETCHED_USER_STATS'
+export const FETCHED_USERS = 'FETCHED_USERS'
 export const PULL_FIRST_DOG = 'PULL_FIRST_DOG'
 
 export const login = (email, password) => dispatch => {
@@ -101,6 +102,21 @@ export const getUserStats = () => (dispatch, getState) => {
       dispatch({
         type: FETCHED_USER_STATS,
         payload: result.body.length
+      })
+    })
+}
+
+export const getUsers = () => (dispatch, getState) => {
+  const state = getState()
+  const jwt = state.loginSuccess.jwt
+
+  request
+    .get(`${baseUrl}/users`)
+    .set('Authorization', `Bearer ${jwt}`)
+    .then(result => {
+      dispatch({
+        type: FETCHED_USERS,
+        payload: result.body
       })
     })
 }

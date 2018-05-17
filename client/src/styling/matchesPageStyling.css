@@ -6,13 +6,13 @@
   border-bottom: 1px solid lightgrey;
 }
 
-.matchedUserContainer {
-  /* the div in which the user card is shown */
+.matchedUserContainer,
+.matchedListContainer,
+.matchedUsersContainer {
   margin-top: 20px;
 }
 
-#matchScore{
-  /* the numner of total liked dogs */
+#matchScore {
   color: red;
   font-size: 2em;
   font-weight: bold;
