@@ -1,5 +1,5 @@
 .matchesPageContainer {
-  height:100%;
+  height: 100%;
   /* width: 50%; */
 }
 
@@ -12,8 +12,10 @@
   border-radius: 10px;
   border: 1px solid lightgrey;
   display: flex;
-  margin-bottom: 2px;
+  margin-bottom: 20px;
   text-align: left;
+  margin-top: 20px;
+  width: 70%;
 }
 
 .userAvatar {
@@ -27,7 +29,7 @@
 .userCardText {
   font-size: 0.8em;
 }
- #userName {
-   font-weight: bold;
-   border-bottom: 1px solid lightgrey;
- }
+#userName {
+  font-weight: bold;
+  border-bottom: 1px solid lightgrey;
+}

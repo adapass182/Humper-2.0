@@ -77,11 +77,10 @@ class MainContainer extends PureComponent {
           />
         </header>
 
-        <div id="leftSpace" />
+        {/* <div id="leftSpace" /> */}
+        <div className="main-content">{this.pageview()}</div>
 
-        {this.pageview()}
-
-        <div id="rightSpace" />
+        {/* <div id="rightSpace" /> */}
 
         <div className="footer">
           {this.props.loginSuccess && (
