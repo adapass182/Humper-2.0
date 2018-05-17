@@ -35,13 +35,13 @@ class ProfilePage extends PureComponent {
         {this.props.userDetails.admin && (
           <button
             name="admin"
-            className="logoutbutton"
+            id="button"
             onClick={this.props.onClickAdmin}>
             Admin
           </button>
         )}
         <button
-          className="logoutbutton"
+          id="button"
           name="logout"
           onClick={this.props.onClickLogout}>
           Log Out
