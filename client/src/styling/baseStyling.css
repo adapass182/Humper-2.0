@@ -22,7 +22,8 @@ h3 {
 
 p,
 button,
-li {
+li,
+label {
   font-family: 'Comfortaa', cursive;
   font-size: 0.95em;
 }
