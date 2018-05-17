@@ -25,14 +25,11 @@ export const login = (email, password) => dispatch => {
       })
     })
     .catch(err => {
-      if (err.status === 400) {
-        dispatch({
-          type: USER_LOGIN_FAILED,
-          payload: err.response.body.message || 'Unknown error'
-        })
-      } else {
-        console.error(err)
-      }
+      console.log('Catch error: ', err)
+      dispatch({
+        type: USER_LOGIN_FAILED,
+        payload: err.response.body.message || 'Unknown error'
+      })
     })
 }
 
@@ -60,27 +57,30 @@ export const register = (
       .post(`${baseUrl}/users`)
       .send({ firstname, lastname, email, password })
       .then(result => {
-        console.log(result)
-        dispatch({
-          type: USER_REGISTER_SUCCESS,
-          payload: result.body
-        })
-      })
-      .catch(err => {
-        if (err.status === 400) {
+        if (result.accepted === false) {
           dispatch({
             type: USER_REGISTER_FAILED,
-            payload: err.response.body.message || 'Unknown error'
+            payload: result.body.errors[0].message || 'Unknown error'
           })
         } else {
-          console.error(err)
+          dispatch({
+            type: USER_REGISTER_SUCCESS,
+            payload: result.body
+          })
         }
       })
+      .catch(err => {
+        console.log('Catch error: ', err)
+        dispatch({
+          type: USER_REGISTER_FAILED,
+          payload: err.response.body.message || 'Unknown error'
+        })
+      })
   } else {
-    return {
+    dispatch({
       type: USER_REGISTER_FAILED,
-      payload: "Passwords don't match"
-    }
+      payload: "Passwords don't match. Please try again"
+    })
   }
 }
 

@@ -4,9 +4,6 @@ export default function(state = false, action) {
   switch (action.type) {
     case USER_REGISTER_SUCCESS:
       return true
-    case USER_REGISTER_FAILED:
-      console.log(action.payload)
-      return false
     default:
       return state
   }

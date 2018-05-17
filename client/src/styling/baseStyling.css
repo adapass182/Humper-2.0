@@ -31,3 +31,11 @@ label {
 p {
   line-height: 1.4
 }
+
+.error-message {
+  color: red;
+}
+
+p {
+  padding: 0.5em;
+}

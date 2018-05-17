@@ -57,10 +57,18 @@ class LoginForm extends PureComponent {
         </form>
 
         <p>Need to create an account? Use the button below!</p>
+      
+        {this.props.loginFailed && (
+          <p className="error-message">{this.props.loginFailed.error}</p>
+        )}
 
       </div>
     )
   }
 }
 
-export default connect(null, { login })(LoginForm)
+const mapStateToProps = ({ loginFailed }) => {
+  return { loginFailed }
+}
+
+export default connect(mapStateToProps, { login })(LoginForm)
