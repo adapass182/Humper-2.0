@@ -3,11 +3,6 @@ import { connect } from 'react-redux'
 import { getPrefs } from '../actions/rateDog'
 
 class ProfilePage extends PureComponent {
-  componentWillMount() {
-    this.props.getPrefs()
-  }
-  s
-
   render() {
     return (
       <div className="profilePageContainer">
@@ -33,17 +28,11 @@ class ProfilePage extends PureComponent {
           })}
         </ul>
         {this.props.userDetails.admin && (
-          <button
-            name="admin"
-            id="button"
-            onClick={this.props.onClickAdmin}>
+          <button name="admin" id="button" onClick={this.props.onClickAdmin}>
             Admin
           </button>
         )}
-        <button
-          id="button"
-          name="logout"
-          onClick={this.props.onClickLogout}>
+        <button id="button" name="logout" onClick={this.props.onClickLogout}>
           Log Out
         </button>
       </div>

@@ -11,6 +11,8 @@ export const DISLIKE_DOG = 'DISLIKE_DOG'
 export const POSTED_BREED = 'POSTED_BREED'
 export const FETCHED_PREFS = 'FETCHED_PREFS'
 export const FETCHED_DOG_STATS = 'FETCHED_DOG_STATS'
+export const FETCHED_USER_TOP10 = 'FETCHED_USER_TOP10'
+export const FETCHED_USER_PREFS = 'FETCHED_USER_PREFS'
 
 export const getDog = () => dispatch => {
   request
@@ -43,6 +45,34 @@ export const getPrefs = () => (dispatch, getState) => {
     .catch(err => alert(err))
 }
 
+export const getUsersPrefs = () => (dispatch, getState) => {
+  const state = getState()
+  const jwt = state.loginSuccess.jwt
+  const users = state.users
+  if (state.userPrefs.length === 0) {
+    users.forEach(user => {
+      request
+        .get(`${baseUrl}/preferences/${user.id}`)
+        .set('Authorization', `Bearer ${jwt}`)
+        .then(response => {
+          let breeds = []
+          console.log(response)
+          let responses = [...response.body]
+          console.log(responses)
+          responses.forEach(element => breeds.push(element.breed))
+          dispatch({
+            type: FETCHED_USER_PREFS,
+            payload: {
+              user: `${user.firstname} ${user.lastname}`,
+              breeds: breeds
+            }
+          })
+        })
+        .catch(err => alert(err))
+    })
+  }
+}
+
 export const rateDog = (breed, opinion) => (dispatch, getState) => {
   const state = getState()
   const jwt = state.loginSuccess.jwt
@@ -67,6 +97,21 @@ export const getDogStats = () => (dispatch, getState) => {
       dispatch({
         type: FETCHED_DOG_STATS,
         payload: result.body.length
+      })
+    })
+}
+
+export const getUserTop10 = () => (dispatch, getState) => {
+  const state = getState()
+  const jwt = state.loginSuccess.jwt
+
+  request
+    .get(`${baseUrl}/preferences/usertop10`)
+    .set('Authorization', `Bearer ${jwt}`)
+    .then(result => {
+      dispatch({
+        type: FETCHED_USER_TOP10,
+        payload: result.body
       })
     })
 }

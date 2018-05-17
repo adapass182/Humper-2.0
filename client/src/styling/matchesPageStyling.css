@@ -7,11 +7,13 @@
   border-bottom: 1px solid lightgrey;
 }
 
-.matchedUserContainer {
+.matchedUserContainer,
+.matchedListContainer,
+.matchedUsersContainer {
   margin-top: 20px;
 }
 
-#matchScore{
+#matchScore {
   color: red;
   font-size: 2em;
   font-weight: bold;

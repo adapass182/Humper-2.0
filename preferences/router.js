@@ -33,6 +33,22 @@ router.post('/preferences', requireUser, (req, res) => {
   })
 })
 
+router.get('/preferences/usertop10', requireUser, (req, res) => {
+  sequelize
+    .query(
+      `select "userId", breed, count(*) as count from preferences
+      group by "userId", breed
+      order by "userId", count desc`,
+      { type: sequelize.QueryTypes.SELECT }
+    )
+    .then(result => {
+      res.send(result)
+    })
+    .catch(err => {
+      res.status(500).send({ error: 'Something went wrong with Postgres' })
+    })
+})
+
 router.get('/preferences/top10', requireUser, (req, res) => {
   const preference = req.body
   preference.userId = req.user.id
@@ -42,6 +58,24 @@ router.get('/preferences/top10', requireUser, (req, res) => {
       `select "userId", breed, count(*) as count from preferences where "userId" = ${
         preference.userId
       } AND val = 1 group by "userId", breed order by count desc limit 10`,
+      { type: sequelize.QueryTypes.SELECT }
+    )
+    .then(result => {
+      res.send(result)
+    })
+    .catch(err => {
+      res.status(500).send({ error: 'Something went wrong with Postgres' })
+    })
+})
+
+router.get('/preferences/:id', requireUser, (req, res) => {
+  const preference = req.body
+  preference.userId = req.user.id
+  const userId = req.params.id
+
+  sequelize
+    .query(
+      `select "userId", breed, count(*) as count from preferences where "userId" = ${userId} AND val = 1 group by "userId", breed order by count desc limit 5`,
       { type: sequelize.QueryTypes.SELECT }
     )
     .then(result => {
