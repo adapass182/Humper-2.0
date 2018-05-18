@@ -6,9 +6,6 @@ import { getPrefs, getUsersPrefs } from '../actions/rateDog'
 import UserCardComponent from './UserCardComponent'
 
 class MatchesPage extends PureComponent {
-  // <p>Hey there, {props.currUser ?  props.currUser.firstname : null} !</p>
-  // <p>{props.match ? props.match.firstname : null} who liked {props.match ? props.match.ct : null} dogs.</p>
-  // <p>Send a mail here to get in touch: {props.match ? props.match.email : null} </p>
   constructor() {
     super()
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -22,9 +19,9 @@ class MatchesPage extends PureComponent {
     this.setState({
       stats: e.target.value
     })
-     if (e.target.value === 'activity') {
-       this.props.getMatch()
-     }
+    if (e.target.value === 'activity') {
+      this.props.getMatch()
+    }
     if (e.target.value === 'breed') {
       this.props.getMatches(this.props.userPrefs)
     }
