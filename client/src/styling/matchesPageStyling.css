@@ -2,22 +2,21 @@
 
 .matchAmountContainer {
   /* the div which contains the number which displays the amount of likes */
-  padding-bottom: 20px;
+  margin-bottom: 10px;
   border-bottom: 1px solid lightgrey;
 }
 
 .matchedUserContainer,
 .matchedListContainer,
 .matchedUsersContainer {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
-.parashrink {
-  white-space: nowrap;
-}
 
-#matchScore {
+#matchScore  {
+
   color: red;
   font-size: 2em;
   font-weight: bold;
+  padding: 0px;
 }

@@ -15,6 +15,7 @@ It imports:
 @import './baseStyling.css';
 @import './rateADogCSS.css';
 @import './matchesPageStyling.css';
+@import './smallUserCardStyling.css';
 @import './userCardStyling.css';
 @import './profilePageStyling.css';
 @import './loginFormStyling.css';
