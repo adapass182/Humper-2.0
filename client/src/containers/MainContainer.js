@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import AdminDashboard from '../components/AdminDashboard_component'
 import { login, noUser, logout, toLoginPage } from '../actions/users'
-
 import LoginForm from '../components/LoginForm_component'
 import RegisterForm from '../components/RegisterForm_component'
 import MatchesPage from '../components/MatchesPage_component'
@@ -76,10 +75,7 @@ class MainContainer extends PureComponent {
           />
         </header>
 
-        {/* <div id="leftSpace" /> */}
         <div className="main-content">{this.pageview()}</div>
-
-        {/* <div id="rightSpace" /> */}
 
         <div className="footer">
           {this.props.loginSuccess && (

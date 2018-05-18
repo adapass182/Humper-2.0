@@ -7,7 +7,11 @@ class RegisterForm extends PureComponent {
 
   handleSubmit = e => {
     e.preventDefault()
-    if (this.state.email) {
+    if (
+      this.state.email &&
+      this.state.password &&
+      this.state.password_confirm
+    ) {
       this.props.register(
         this.state.firstname,
         this.state.lastname,
