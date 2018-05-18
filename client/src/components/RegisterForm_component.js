@@ -71,6 +71,7 @@ class RegisterForm extends PureComponent {
               type="text"
               name="firstname"
               id="firstname"
+              required="required"
               value={this.state.firstname || ''}
               onChange={this.handleChange}
             />
@@ -82,6 +83,7 @@ class RegisterForm extends PureComponent {
               type="text"
               name="lastname"
               id="lastname"
+              required="required"
               value={this.state.lastname || ''}
               onChange={this.handleChange}
             />
