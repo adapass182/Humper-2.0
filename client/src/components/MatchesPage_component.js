@@ -66,7 +66,11 @@ class MatchesPage extends PureComponent {
               <p>A user with a similar love of dogs is:</p>
               <UserCardComponent
                 className="test"
-                name={props.match ? props.match.firstname : null}
+                name={
+                  props.match
+                    ? `${props.match.firstname} ${props.match.lastname}`
+                    : null
+                }
                 dogLikes={props.match ? props.match.ct : null}
               />
             </div>

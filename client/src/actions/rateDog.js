@@ -11,7 +11,6 @@ export const DISLIKE_DOG = 'DISLIKE_DOG'
 export const POSTED_BREED = 'POSTED_BREED'
 export const FETCHED_PREFS = 'FETCHED_PREFS'
 export const FETCHED_DOG_STATS = 'FETCHED_DOG_STATS'
-export const FETCHED_USER_TOP10 = 'FETCHED_USER_TOP10'
 export const FETCHED_USER_PREFS = 'FETCHED_USER_PREFS'
 
 export const getDog = () => dispatch => {
@@ -97,21 +96,6 @@ export const getDogStats = () => (dispatch, getState) => {
       dispatch({
         type: FETCHED_DOG_STATS,
         payload: result.body.length
-      })
-    })
-}
-
-export const getUserTop10 = () => (dispatch, getState) => {
-  const state = getState()
-  const jwt = state.loginSuccess.jwt
-
-  request
-    .get(`${baseUrl}/preferences/usertop10`)
-    .set('Authorization', `Bearer ${jwt}`)
-    .then(result => {
-      dispatch({
-        type: FETCHED_USER_TOP10,
-        payload: result.body
       })
     })
 }
