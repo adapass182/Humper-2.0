@@ -4,11 +4,15 @@ import { getMatch, getMatches } from '../actions/matches'
 import { getUsers } from '../actions/users'
 import { getPrefs, getUsersPrefs } from '../actions/rateDog'
 import UserCardComponent from './UserCardComponent'
+import SmallUserCardComp from './SmallUserCardComp'
+
+// <li key={match.name}>
+//   <p>
+//     {' '}
+//     <a className="breed"> {match.name}</a>, Top Breeds in
+//     Common: {match.score}
 
 class MatchesPage extends PureComponent {
-  // <p>Hey there, {props.currUser ?  props.currUser.firstname : null} !</p>
-  // <p>{props.match ? props.match.firstname : null} who liked {props.match ? props.match.ct : null} dogs.</p>
-  // <p>Send a mail here to get in touch: {props.match ? props.match.email : null} </p>
   constructor() {
     super()
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -44,7 +48,9 @@ class MatchesPage extends PureComponent {
   render() {
     const props = this.props
     return (
+
       <div className="matchesPageContainer">
+
         <div>
           <div className="matchAmountContainer">
             <h2>Your matches:</h2>
@@ -82,14 +88,11 @@ class MatchesPage extends PureComponent {
               <p>Users who like the same breeds are:</p>
               <div className="matchedUsersContainer">
                 {this.props.myMatches.map(match => {
-                  return (
-                    <li key={match.name}>
-                      <p>
-                        {' '}
-                        <a className="breed"> {match.name}</a>, Top Breeds in
-                        Common: {match.score}
-                      </p>
-                    </li>
+                  return (<SmallUserCardComp
+                    className="top10"
+                    name={match.name}
+                    dogLikes={match.score}
+                  />
                   )
                 })}
               </div>
