@@ -1,4 +1,8 @@
-import { USER_LOGIN_FAILED, USER_REGISTER_SUCCESS } from '../actions/users'
+import {
+  USER_LOGIN_FAILED,
+  USER_REGISTER_SUCCESS,
+  USER_LOGOUT_SUCCESS
+} from '../actions/users'
 
 export default function(state = null, action) {
   switch (action.type) {
@@ -7,6 +11,8 @@ export default function(state = null, action) {
         error: action.payload
       }
     case USER_REGISTER_SUCCESS:
+      return null
+    case USER_LOGOUT_SUCCESS:
       return null
     default:
       return state
