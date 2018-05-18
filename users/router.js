@@ -14,7 +14,9 @@ const requireUser = (req, res, next) => {
 }
 
 router.get('/users', requireUser, (req, res) => {
-  User.findAll()
+  User.findAll({
+    attributes: ['id', 'email', 'firstname', 'lastname']
+  })
     .then(result => res.send(result))
     .catch(err => {
       res.send(err)

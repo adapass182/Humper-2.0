@@ -9,7 +9,6 @@ import userDetails from './userDetails_reducer'
 import matches from './matches_reducer'
 import adminStats from './adminStats_reducer'
 import pullFirstDogState from './pullFirstDog_reducer'
-import matchData from './matchData_reducer'
 import users from './users_reducer'
 import userPrefs from './userPrefs_reducer'
 import myMatches from './myMatches_reducer'
@@ -26,7 +25,6 @@ export default {
   matches,
   adminStats,
   pullFirstDogState,
-  matchData,
   users,
   userPrefs,
   myMatches

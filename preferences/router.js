@@ -75,7 +75,7 @@ router.get('/preferences/:id', requireUser, (req, res) => {
 
   sequelize
     .query(
-      `select "userId", breed, count(*) as count from preferences where "userId" = ${userId} AND val = 1 group by "userId", breed order by count desc limit 5`,
+      `select "userId", breed, count(*) as count from preferences where "userId" = ${userId} AND val = 1 group by "userId", breed order by count desc limit 10`,
       { type: sequelize.QueryTypes.SELECT }
     )
     .then(result => {
