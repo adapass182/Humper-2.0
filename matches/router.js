@@ -97,8 +97,9 @@ router.get('/matches', requireUser, (req, res) => {
 
       // get current user index in likesPerUser array
       const currUser = likesPerUser.findIndex( x => x.userId == req.user.id )
+      const matchThreshold = 100
 
-      // check neighbor elements, see if their number of likes is similar (max diff 50)
+      // check neighbor elements, see if their number of likes is similar (max diff matchThreshold)
       //
       // check the previous only if current user is not the first elem / check next only if current user is not the last
       if (currUser !== 0 && currUser !== likesPerUser.length-1 ) {
@@ -112,7 +113,7 @@ router.get('/matches', requireUser, (req, res) => {
         console.log(prevDiff)
         console.log(nextDiff)
         // get the better match - neighbor that is closer to the current user likes if both are within limits
-        if (prevDiff < 50 && nextDiff < 50) {
+        if (prevDiff < matchThreshold && nextDiff < matchThreshold) {
           const matchingUser = prevDiff < nextDiff ? prevUser : nextUser
           console.log(matchingUser)
           res.send({
@@ -121,20 +122,44 @@ router.get('/matches', requireUser, (req, res) => {
           })
         }
         // get the neighbor which is within limits if only one of them is close enough
-        if (prevDiff < 50 || nextDiff < 50) {
-          const matchingUser = 50 < prevDiff ? nextUser : prevUser
+        if (prevDiff < matchThreshold || nextDiff < matchThreshold) {
+          const matchingUser = matchThreshold < prevDiff ? nextUser : prevUser
           console.log(matchingUser)
           res.send({
             currentUser: likesPerUser[currUser],
             matchingUser
           })
         }
+        // final fallback - if there's no user matching within the configured limits, 
+        // get the nearest user to show someone
+        if (!matchingUser) {
+          if ( currUser === 0 ) {
+            const matchingUser = currUser+1
+            res.send({
+              currentUser: likesPerUser[currUser],
+              matchingUser
+            })
+          } else if ( currUser = likesPerUser.length-1 ) {
+            const matchingUser = currUser-1
+            res.send({
+              currentUser: likesPerUser[currUser],
+              matchingUser
+            })
+          } else {
+            const matchingUser = prevDiff < nextDiff ? currUser-1 : currUser+1
+            res.send({
+              currentUser: likesPerUser[currUser],
+              matchingUser
+            })
+          }
+
+        }
       }
       // check only the next if curr user is the first elem
       if (currUser === 0) {
         const nextUser = likesPerUser[currUser + 1]
         const nextDiff = Math.abs( Number(likesPerUser[currUser].ct) - Number(nextUser.ct) )
-        if (nextDiff < 50) {
+        if (nextDiff < matchThreshold) {
           const matchingUser = nextUser
           res.send({
             currentUser: likesPerUser[currUser],
@@ -146,7 +171,7 @@ router.get('/matches', requireUser, (req, res) => {
       if (currUser === likesPerUser.length-1) {
         const prevUser = likesPerUser[currUser - 1]
         const prevDiff = Math.abs( Number(likesPerUser[currUser].ct) - Number(prevUser.ct) )
-        if (prevDiff < 50) {
+        if (prevDiff < matchThreshold) {
           const matchingUser = prevUser
           res.send({
             currentUser: likesPerUser[currUser],
