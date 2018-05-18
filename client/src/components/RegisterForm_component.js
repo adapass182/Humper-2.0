@@ -27,7 +27,33 @@ class RegisterForm extends PureComponent {
     event.target.setCustomValidity('')
     if (!event.target.validity.valid) {
       event.target.setCustomValidity(
-        'Password must be at least 8 characters long, with at least one letter and one number!'
+        'Password must be at least 8 characters long, with at least one letter and one number'
+      )
+    }
+    this.setState({
+      [name]: value
+    })
+  }
+
+  handleChangeEmail = event => {
+    const { name, value } = event.target
+    event.target.setCustomValidity('')
+    if (!event.target.validity.valid) {
+      event.target.setCustomValidity(
+        'Please enter a valid email address'
+      )
+    }
+    this.setState({
+      [name]: value
+    })
+  }
+
+  handleChangeConfirm = event => {
+    const { name, value } = event.target
+    event.target.setCustomValidity('')
+    if (!event.target.validity.valid) {
+      event.target.setCustomValidity(
+        'Please confirm your password'
       )
     }
     this.setState({
@@ -68,8 +94,9 @@ class RegisterForm extends PureComponent {
               pattern="(?!(^[.-].*|[^@]*[.-]@|.*\.{2,}.*)|^.{254}.)([a-zA-Z0-9!#$%&'*+\/=?^_`{|}~.-]+@)(?!-.*|.*-\.)([a-zA-Z0-9-]{1,63}\.)+[a-zA-Z]{2,15}"
               name="email"
               id="email"
+              required="required"
               value={this.state.email || ''}
-              onChange={this.handleChange}
+              onChange={this.handleChangeEmail}
             />
           </div>
 
@@ -80,6 +107,7 @@ class RegisterForm extends PureComponent {
               pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
               name="password"
               id="password"
+              required="required"
               value={this.state.password || ''}
               onChange={this.handleChange}
             />
@@ -91,8 +119,9 @@ class RegisterForm extends PureComponent {
               type="password"
               name="password_confirm"
               id="password_confirm"
+              required="required"
               value={this.state.password_confirm || ''}
-              onChange={this.handleChange}
+              onChange={this.handleChangeConfirm}
             />
           </div>
           <button id="button" className="SubmitButton" type="submit">
