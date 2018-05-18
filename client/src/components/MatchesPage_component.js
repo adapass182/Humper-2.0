@@ -6,12 +6,6 @@ import { getPrefs, getUsersPrefs } from '../actions/rateDog'
 import UserCardComponent from './UserCardComponent'
 import SmallUserCardComp from './SmallUserCardComp'
 
-// <li key={match.name}>
-//   <p>
-//     {' '}
-//     <a className="breed"> {match.name}</a>, Top Breeds in
-//     Common: {match.score}
-
 class MatchesPage extends PureComponent {
   constructor() {
     super()
