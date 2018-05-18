@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { getMatch, getMatches } from '../actions/matches'
 import { getUsers } from '../actions/users'
-import { getUsersPrefs } from '../actions/rateDog'
+import { getPrefs, getUsersPrefs } from '../actions/rateDog'
 import UserCardComponent from './UserCardComponent'
 
 class MatchesPage extends PureComponent {
@@ -32,6 +32,7 @@ class MatchesPage extends PureComponent {
 
   componentWillMount() {
     this.props.getMatch()
+    this.props.getPrefs()
     this.props.getUsersPrefs()
   }
 
@@ -114,5 +115,6 @@ export default connect(mapStateToProps, {
   getMatch,
   getMatches,
   getUsers,
+  getPrefs,
   getUsersPrefs
 })(MatchesPage)

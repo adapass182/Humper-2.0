@@ -3,6 +3,10 @@ import { connect } from 'react-redux'
 import { getPrefs } from '../actions/rateDog'
 
 class ProfilePage extends PureComponent {
+  componentWillMount() {
+    this.props.getPrefs()
+  }
+
   render() {
     return (
       <div className="profilePageContainer">
