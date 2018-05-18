@@ -16,10 +16,6 @@ class MainContainer extends PureComponent {
     this.state = { currentPage: 'rateADog' }
   }
   
-  //  componentWillMount() {
-  //    this.props.login('secondUser@humper.com', 'password')
-  //  }
-
   pageview = () => {
     if (!this.props.loginSuccess && this.props.userExists) {
       return <LoginForm className="content" />
