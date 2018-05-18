@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import AdminDashboard from '../components/AdminDashboard_component'
 import { login, noUser, logout, toLoginPage } from '../actions/users'
-// import humperIcon from "../images/humperIcon"
 
 import LoginForm from '../components/LoginForm_component'
 import RegisterForm from '../components/RegisterForm_component'
@@ -15,7 +14,7 @@ class MainContainer extends PureComponent {
     super(props)
     this.state = { currentPage: 'rateADog' }
   }
-  
+
   pageview = () => {
     if (!this.props.loginSuccess && this.props.userExists) {
       return <LoginForm className="content" />
