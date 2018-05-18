@@ -2,6 +2,7 @@ const User = require('./model')
 const Router = require('express').Router
 const bcrypt = require('bcrypt')
 const sign = require('../jwt').sign
+const nodemailer = require('nodemailer')
 
 const router = new Router()
 
@@ -12,6 +13,15 @@ const requireUser = (req, res, next) => {
       message: 'Please login'
     })
 }
+
+// defining app email for sending mails
+const transporter = nodemailer.createTransport({
+ service: 'gmail',
+ auth: {
+        user: 'humperapp@gmail.com',
+        pass: 'humperAdmin90-='
+    }
+})
 
 router.get('/users', requireUser, (req, res) => {
   User.findAll({
@@ -30,6 +40,14 @@ router.post('/users', (req, res) => {
     email: req.body.email,
     password: bcrypt.hashSync(req.body.password, 10)
   }
+  
+  // defining email
+  const mailOptions = {
+  from: 'humperapp@gmail.com', // sender address
+  to: user.email, // list of receivers
+  subject: 'Signup to Humper!', // Subject line
+  html: `<p>Thanks for signing up, ${user.firstname} </p>`// plain text body
+  }
 
   User.create(user)
     .then(entity => {
@@ -38,6 +56,13 @@ router.post('/users', (req, res) => {
         id: entity.id,
         name: entity.firstname + ' ' + entity.lastname,
         email: entity.email
+      })
+      // send signup email
+      transporter.sendMail(mailOptions, function (err, info) {
+         if(err)
+           console.log(err)
+         else
+           console.log(info);
       })
     })
     .catch(err => {
