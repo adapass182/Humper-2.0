@@ -1,5 +1,18 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
+#
+### PROD GITIGNORE
+#
+
+/public
+/src
+static.json
+test.js
+yarn.lock
+README.md
+.eslintrc
+package.json
+
 # dependencies
 /node_modules
 node_modules/
