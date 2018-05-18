@@ -12,9 +12,12 @@
   margin-top: 20px;
 }
 
+.parashrink {
+  white-space: nowrap;
+}
+
 #matchScore {
   color: red;
   font-size: 2em;
   font-weight: bold;
 }
- 

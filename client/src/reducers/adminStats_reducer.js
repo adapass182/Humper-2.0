@@ -19,11 +19,13 @@ export default (
   switch (type) {
     case FETCHED_USER_STATS:
       return {
+        ...state,
         totalUsers: payload,
         totalDogs: state.totalDogs
       }
     case FETCHED_DOG_STATS:
       return {
+        ...state,
         totalUsers: state.totalUsers,
         totalDogs: payload
       }
