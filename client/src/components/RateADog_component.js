@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { getDog, rateDog, getPrefs } from '../actions/rateDog'
 import { pullFirstDog, getUsers } from '../actions/users'
+import { getTopTenLiked } from '../actions/matches'
 
 class RateADog extends PureComponent {
   componentWillMount() {
@@ -10,6 +11,7 @@ class RateADog extends PureComponent {
       this.props.pullFirstDog()
       this.props.getUsers()
       this.props.getPrefs()
+      this.props.getTopTenLiked()
     }
   }
 
@@ -64,5 +66,6 @@ export default connect(mapStateToProps, {
   rateDog,
   pullFirstDog,
   getUsers,
-  getPrefs
+  getPrefs,
+  getTopTenLiked
 })(RateADog)

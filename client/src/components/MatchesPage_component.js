@@ -26,9 +26,9 @@ class MatchesPage extends PureComponent {
     this.setState({
       stats: e.target.value
     })
-     if (e.target.value === 'activity') {
-       this.props.getMatch()
-     }
+    if (e.target.value === 'activity') {
+      this.props.getMatch()
+    }
     if (e.target.value === 'breed') {
       this.props.getMatches(this.props.userPrefs)
     }
@@ -88,11 +88,13 @@ class MatchesPage extends PureComponent {
               <p>Users who like the same breeds are:</p>
               <div className="matchedUsersContainer">
                 {this.props.myMatches.map(match => {
+
                   return (<SmallUserCardComp
                     className="top10"
                     name={match.name}
                     dogLikes={match.score}
                   />
+
                   )
                 })}
               </div>

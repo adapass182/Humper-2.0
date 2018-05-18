@@ -53,9 +53,7 @@ export const getUsersPrefs = () => (dispatch, getState) => {
         .set('Authorization', `Bearer ${jwt}`)
         .then(response => {
           let breeds = []
-          console.log(response)
           let responses = [...response.body]
-          console.log(responses)
           responses.forEach(element => breeds.push(element.breed))
           dispatch({
             type: FETCHED_USER_PREFS,
@@ -79,7 +77,7 @@ export const rateDog = (breed, opinion) => (dispatch, getState) => {
     .post(`${baseUrl}/preferences`)
     .set('Authorization', `Bearer ${jwt}`)
     .send({ breed, val })
-    .then(response => console.log(response))
+    .end()
 }
 
 export const getDogStats = () => (dispatch, getState) => {
