@@ -1,4 +1,9 @@
-import { NO_USER, USER_REGISTER_SUCCESS, TO_LOGIN } from '../actions/users'
+import {
+  NO_USER,
+  USER_REGISTER_SUCCESS,
+  TO_LOGIN,
+  USER_LOGOUT_SUCCESS
+} from '../actions/users'
 
 export default function(state = true, action) {
   switch (action.type) {
@@ -7,6 +12,8 @@ export default function(state = true, action) {
     case USER_REGISTER_SUCCESS:
       return true
     case TO_LOGIN:
+      return true
+    case USER_LOGOUT_SUCCESS:
       return true
     default:
       return state

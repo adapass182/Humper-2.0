@@ -6,8 +6,6 @@ const baseUrl = process.env.API_URL
   : 'http://localhost:8080'
 
 export const FETCHED_IMAGE = 'FETCHED_IMAGE'
-export const LIKE_DOG = 'LIKE_DOG'
-export const DISLIKE_DOG = 'DISLIKE_DOG'
 export const POSTED_BREED = 'POSTED_BREED'
 export const FETCHED_PREFS = 'FETCHED_PREFS'
 export const FETCHED_DOG_STATS = 'FETCHED_DOG_STATS'
@@ -75,7 +73,6 @@ export const getUsersPrefs = () => (dispatch, getState) => {
 export const rateDog = (breed, opinion) => (dispatch, getState) => {
   const state = getState()
   const jwt = state.loginSuccess.jwt
-  // const likeOrDislike = opinion === 'Like' ? LIKE_DOG : DISLIKE_DOG
   const val = opinion === 'Like' ? 1 : -1
 
   request
