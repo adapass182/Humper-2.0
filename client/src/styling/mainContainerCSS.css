@@ -78,3 +78,7 @@ Main container contains:
   border-right: 1px solid lightgrey;
   border-left: 1px solid lightgrey;
 }
+
+input:required:invalid, input:focus:invalid {
+  box-shadow: none;
+}

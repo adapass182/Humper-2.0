@@ -22,7 +22,7 @@ class RegisterForm extends PureComponent {
     }
   }
 
-  handleChange = event => {
+  handleChangePassword = event => {
     const { name, value } = event.target
     event.target.setCustomValidity('')
     if (!event.target.validity.valid) {
@@ -61,6 +61,19 @@ class RegisterForm extends PureComponent {
     })
   }
 
+  handleChangeName = event => {
+    const { name, value } = event.target
+    event.target.setCustomValidity('')
+    if (!event.target.validity.valid) {
+      event.target.setCustomValidity(
+        'Please enter your name'
+      )
+    }
+    this.setState({
+      [name]: value
+    })
+  }
+
   render() {
     return (
       <div>
@@ -71,8 +84,9 @@ class RegisterForm extends PureComponent {
               type="text"
               name="firstname"
               id="firstname"
+              required="required"
               value={this.state.firstname || ''}
-              onChange={this.handleChange}
+              onChange={this.handleChangeName}
             />
           </div>
 
@@ -82,8 +96,9 @@ class RegisterForm extends PureComponent {
               type="text"
               name="lastname"
               id="lastname"
+              required="required"
               value={this.state.lastname || ''}
-              onChange={this.handleChange}
+              onChange={this.handleChangeName}
             />
           </div>
 
@@ -109,7 +124,7 @@ class RegisterForm extends PureComponent {
               id="password"
               required="required"
               value={this.state.password || ''}
-              onChange={this.handleChange}
+              onChange={this.handleChangePassword}
             />
           </div>
 
