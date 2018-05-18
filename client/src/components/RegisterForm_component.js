@@ -22,7 +22,7 @@ class RegisterForm extends PureComponent {
     }
   }
 
-  handleChange = event => {
+  handleChangePassword = event => {
     const { name, value } = event.target
     event.target.setCustomValidity('')
     if (!event.target.validity.valid) {
@@ -124,7 +124,7 @@ class RegisterForm extends PureComponent {
               id="password"
               required="required"
               value={this.state.password || ''}
-              onChange={this.handleChange}
+              onChange={this.handleChangePassword}
             />
           </div>
 
