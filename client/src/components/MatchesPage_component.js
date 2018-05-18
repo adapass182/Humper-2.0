@@ -84,9 +84,9 @@ class MatchesPage extends PureComponent {
                 {this.props.myMatches.map(match => {
                   return (
                     <li key={match.name}>
-                      <p>
+                      <p className="parashrink">
                         {' '}
-                        <a className="breed"> {match.name}</a>, Top Breeds in
+                        <a className="breed"> {match.name}</a> Top Breeds in
                         Common: {match.score}
                       </p>
                     </li>
