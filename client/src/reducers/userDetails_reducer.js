@@ -18,7 +18,7 @@ export default function(state = null, action) {
         preferences: [...action.payload]
       }
     case USER_LOGOUT_SUCCESS:
-      return state = null
+      return null
     default:
       return state
   }
