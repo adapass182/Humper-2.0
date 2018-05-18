@@ -42,9 +42,7 @@ class MatchesPage extends PureComponent {
   render() {
     const props = this.props
     return (
-
       <div className="matchesPageContainer">
-
         <div>
           <div className="matchAmountContainer">
             <h2>Your matches:</h2>
@@ -82,13 +80,13 @@ class MatchesPage extends PureComponent {
               <p>Users who like the same breeds are:</p>
               <div className="matchedUsersContainer">
                 {this.props.myMatches.map(match => {
-
-                  return (<SmallUserCardComp
-                    className="top10"
-                    name={match.name}
-                    dogLikes={match.score}
-                  />
-
+                  return (
+                    <SmallUserCardComp
+                      key={match.name}
+                      className="top10"
+                      name={match.name}
+                      dogLikes={match.score}
+                    />
                   )
                 })}
               </div>
