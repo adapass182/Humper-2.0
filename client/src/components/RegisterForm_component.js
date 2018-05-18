@@ -7,7 +7,11 @@ class RegisterForm extends PureComponent {
 
   handleSubmit = e => {
     e.preventDefault()
-    if (this.state.email) {
+    if (
+      this.state.email &&
+      this.state.password &&
+      this.state.password_confirm
+    ) {
       this.props.register(
         this.state.firstname,
         this.state.lastname,
@@ -20,10 +24,12 @@ class RegisterForm extends PureComponent {
 
   handleChange = event => {
     const { name, value } = event.target
-    event.target.setCustomValidity("");
-            if (!event.target.validity.valid) {
-                event.target.setCustomValidity("Password must be at least 8 characters long, with at least one letter and one number!");
-            }
+    event.target.setCustomValidity('')
+    if (!event.target.validity.valid) {
+      event.target.setCustomValidity(
+        'Password must be at least 8 characters long, with at least one letter and one number!'
+      )
+    }
     this.setState({
       [name]: value
     })
