@@ -56,6 +56,7 @@ class RegisterForm extends PureComponent {
             <p htmlFor="email">Email</p>
             <input
               type="email"
+              pattern="(?!(^[.-].*|[^@]*[.-]@|.*\.{2,}.*)|^.{254}.)([a-zA-Z0-9!#$%&'*+\/=?^_`{|}~.-]+@)(?!-.*|.*-\.)([a-zA-Z0-9-]{1,63}\.)+[a-zA-Z]{2,15}"
               name="email"
               id="email"
               value={this.state.email || ''}
