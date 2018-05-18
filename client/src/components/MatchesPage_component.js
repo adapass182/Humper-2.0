@@ -22,9 +22,9 @@ class MatchesPage extends PureComponent {
     this.setState({
       stats: e.target.value
     })
-    // if (e.target.value === 'activity') {
-    //   this.props.getTopTenLiked()
-    // }
+     if (e.target.value === 'activity') {
+       this.props.getMatch()
+     }
     if (e.target.value === 'breed') {
       this.props.getMatches(this.props.userPrefs)
     }
