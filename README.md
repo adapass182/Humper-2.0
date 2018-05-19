@@ -8,4 +8,4 @@ A tinder-style app for dog lovers, written using React/Redux, Node/Express and P
 - Admin dashboard
 - Matching algorithms
 
-*Created for Codaisseur Academy - Class 17 - Intermediate Bootcamp Project Week*
+*Created for [Codaisseur Academy](https://codaisseur.com/) - Class 17 - Intermediate Bootcamp Project Week*
